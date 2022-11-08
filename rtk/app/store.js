@@ -7,7 +7,6 @@ import listContainerReducer from "../features/socialIcons/listContainerSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     socialIcons: socialIconReducer,
     listContainer: listContainerReducer,
   },
