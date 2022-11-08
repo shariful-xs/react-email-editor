@@ -1,48 +1,74 @@
-import { useNode, useEditor } from '@craftjs/core';
-import React,{useState} from 'react';
+import React, { useState } from "react";
+import FileUpload from "react-material-file-upload";
 
-import { ImgtoolSetting } from './ImgtoolSetting';
-let testPic ;
+import { ImgToolSettings } from "./ImgtoolSetting";
+import { useDispatch, useSelector } from "react-redux";
+import { setPicture } from "../../../rtk/features/picture/pictureSlice";
+
+import { Resizer } from "../Resizer";
+
+const defaultProps = {
+  padding: ["0", "0", "0", "0"],
+  margin: ["0", "0", "0", "0"],
+  width: "100%",
+  height: "auto",
+};
 
 export const ImgTool = (props) => {
+  const dispatch = useDispatch();
+  const file = useSelector((state) => state.picutre.file);
 
-    const [picture,setPicture] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWEiCtXDj2Lodd9Nh_Q5MDUTNE7LL1rBdY0ytlKW3KCA&s")
+  props = {
+    ...defaultProps,
+    ...props,
+  };
+  const { padding, margin, children } = props;
+  //file upload handler
+  const handleFileUpload = (files) => {
+    const newFile = URL.createObjectURL(files[0]);
+    dispatch(setPicture(newFile));
+  };
 
-    testPic = setPicture
-
-
-  const { enabled } = useEditor((state) => ({
-    enabled: state.options.enabled,
-  }));
-  const {
-    connectors: { connect },
-  } = useNode((node) => ({
-    selected: node.events.selected,
-  }));
-
- 
+  //checking height
+  const containerHeight = children ? "100%" : "200px";
 
   return (
-    <div style={{
-      width:"100%"
-    }} ref={connect} enabled={enabled}>
-      <div style={{
-      backgroundImage: `url(${picture})`,
-      backgroundRepeat:"no-repeat",
-      backgroundSize:"cover",
-      width:"100%",
-      height:"200px"
-      }}>
+    <Resizer propKey={{ width: "width", height: "height" }}>
+      <div
+        style={{
+          width: "100%",
+          height: containerHeight,
+          backgroundImage: `url(${file})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
+          margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
+        }}
+      >
+        {!file && (
+          <div
+            style={{
+              width: "310px",
+              height: "200px",
+              margin: "0 auto",
+            }}
+          >
+            <FileUpload onChange={handleFileUpload} />
+          </div>
+        )}
+        {children}
       </div>
-    </div>
+    </Resizer>
   );
 };
 
 ImgTool.craft = {
-  displayName:'Image Control',
-  related: {
-  toolbar:()=>{
-    return <ImgtoolSetting  setPicture={testPic}/>
+  displayName: "Img Tool",
+  props: defaultProps,
+  rules: {
+    canDrag: () => true,
   },
+  related: {
+    toolbar: ImgToolSettings,
   },
 };

@@ -12,6 +12,8 @@ import GallarySvg from "../../../public/icons/toolbox/GallarySvg";
 import DividerSvg from "../../../public/icons/toolbox/DividerSvg";
 import ColumnSvg from "../../../public/icons/toolbox/ColumnSvg";
 import TimerSvg from "../../../public/icons/toolbox/TimerSvg";
+import ListSvg from "../../../public/icons/toolbox/ListSvg";
+
 import { Button } from "../../selectors/Button";
 import { Container } from "../../selectors/Container";
 import { Text } from "../../selectors/Text";
@@ -21,6 +23,7 @@ import { SocailGroup } from "../../selectors/SocailGroup";
 import { Divider } from "../../selectors/Divider";
 import { Columns } from "../../selectors/Columns";
 import { Timer } from "../../selectors/Timer";
+import { List } from "../../selectors/List";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -101,13 +104,16 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div ref={(ref) => create(ref, <ImgTool />)}>
-          <Tooltip title="Image" placement="right">
+        <div
+          ref={(ref) => create(ref, <Element canvas is={ImgTool}></Element>)}
+        >
+          <Tooltip title="Picture Tool" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <GallarySvg />
             </Item>
           </Tooltip>
         </div>
+
         <div ref={(ref) => create(ref, <SocailGroup />)}>
           <Tooltip title="Socail Icon" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
@@ -147,6 +153,20 @@ export const Toolbox = () => {
           <Tooltip title="Timer" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <TimerSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div
+          ref={(ref) =>
+            create(
+              ref,
+              <List fontSize="12" textAlign="left" text="New List Created" />
+            )
+          }
+        >
+          <Tooltip title="List" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <ListSvg />
             </Item>
           </Tooltip>
         </div>

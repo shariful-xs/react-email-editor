@@ -90,7 +90,7 @@ export const Header = ({ bodyRef }) => {
   const handleLoadBtn = () => {
     actions.setOptions((options) => (options.enabled = !enabled));
     const json = query.serialize();
-    console.log(json);
+    // console.log(json);
   };
 
   return (

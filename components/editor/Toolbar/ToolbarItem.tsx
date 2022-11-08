@@ -7,6 +7,7 @@ import { ToolbarDropdown } from "./ToolbarDropdown";
 import { ToolbarTextInput } from "./ToolbarTextInput";
 import InputBox from "./InputBox";
 import Date from "./Date";
+import ListStyle from "./ListStyle";
 
 const iOSBoxShadow =
   "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
@@ -172,6 +173,18 @@ export const ToolbarItem = ({
           <Date
             title={props.label}
             onChange={(value) =>
+              setProp(
+                (props: any) =>
+                  (props[propKey] = onChange ? onChange(value) : value)
+              )
+            }
+            {...props}
+          />
+        ) : type === "listStyle" ? (
+          <ListStyle
+            title={props.label}
+            value={value || "circle"}
+            onchange={(value) =>
               setProp(
                 (props: any) =>
                   (props[propKey] = onChange ? onChange(value) : value)

@@ -16,7 +16,8 @@ import { ImgTool } from "../components/selectors/Imgtool";
 import { SocailGroup } from "../components/selectors/SocailGroup";
 import { Divider } from "../components/selectors/Divider";
 import { Columns } from "../components/selectors/Columns";
-import { Timer } from "../components/selectors/Timer/";
+import { Timer } from "../components/selectors/Timer";
+import { List } from "../components/selectors/List";
 
 const theme = createMuiTheme({
   typography: {
@@ -53,6 +54,7 @@ function App() {
               Divider,
               Columns,
               Timer,
+              List,
             }}
             enabled={false}
             onRender={RenderNode}
@@ -68,7 +70,7 @@ function App() {
                   padding={["40", "40", "40", "40"]}
                   custom={{ displayName: "App" }}
                 >
-                  <Element
+                  {/* <Element
                     canvas
                     is={Container}
                     flexDirection="row"
@@ -381,7 +383,7 @@ function App() {
                         />
                       </Element>
                     </Element>
-                  </Element>
+                  </Element> */}
                 </Element>
               </Frame>
             </Viewport>
