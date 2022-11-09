@@ -33,8 +33,8 @@ const ToolboxDiv = styled.div<{ enabled: boolean }>`
 
 const Item = styled.a<{ move?: boolean }>`
   svg {
-    width: 22px;
-    height: 22px;
+    width: 60px;
+    height: 30px;
     fill: #707070;
   }
   ${(props) =>
@@ -52,12 +52,24 @@ export const Toolbox = () => {
     enabled: state.options.enabled,
   }));
 
+  //checking if the edior docs save sider wide remove
+  const width = enabled ? "10rem" : null;
+
   return (
     <ToolboxDiv
       enabled={enabled && enabled}
-      className="toolbox transition w-12 h-full flex flex-col bg-white"
+      style={{
+        width: width,
+      }}
+      className="toolbox transition  h-full bg-white"
     >
-      <div className="flex flex-1 flex-col items-center pt-3">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(2, 1fr)`,
+        }}
+        className=" pt-3"
+      >
         <div
           ref={(ref) =>
             create(
@@ -74,7 +86,14 @@ export const Toolbox = () => {
           }
         >
           <Tooltip title="Container" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <SquareSvg />
             </Item>
           </Tooltip>
@@ -85,21 +104,42 @@ export const Toolbox = () => {
           }
         >
           <Tooltip title="Text" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <TypeSvg />
             </Item>
           </Tooltip>
         </div>
-        <div ref={(ref) => create(ref, <Button />)}>
+        <div ref={(ref) => create(ref, <Button height="auto" width="200px" />)}>
           <Tooltip title="Button" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <ButtonSvg />
             </Item>
           </Tooltip>
         </div>
         <div ref={(ref) => create(ref, <Video />)}>
           <Tooltip title="Video" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <YoutubeSvg />
             </Item>
           </Tooltip>
@@ -108,7 +148,14 @@ export const Toolbox = () => {
           ref={(ref) => create(ref, <Element canvas is={ImgTool}></Element>)}
         >
           <Tooltip title="Picture Tool" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <GallarySvg />
             </Item>
           </Tooltip>
@@ -116,14 +163,28 @@ export const Toolbox = () => {
 
         <div ref={(ref) => create(ref, <SocailGroup />)}>
           <Tooltip title="Socail Icon" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <SocailSvg />
             </Item>
           </Tooltip>
         </div>
         <div ref={(ref) => create(ref, <Divider />)}>
           <Tooltip title="Divider" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <DividerSvg />
             </Item>
           </Tooltip>
@@ -144,14 +205,28 @@ export const Toolbox = () => {
           }
         >
           <Tooltip title="Column" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block "
+              move
+            >
               <ColumnSvg />
             </Item>
           </Tooltip>
         </div>
         <div ref={(ref) => create(ref, <Timer />)}>
           <Tooltip title="Timer" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block"
+              move
+            >
               <TimerSvg />
             </Item>
           </Tooltip>
@@ -160,12 +235,19 @@ export const Toolbox = () => {
           ref={(ref) =>
             create(
               ref,
-              <List fontSize="12" textAlign="left" text="New List Created" />
+              <List fontSize="14" textAlign="left" text="New List Created" />
             )
           }
         >
           <Tooltip title="List" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block custom-item-class"
+              move
+            >
               <ListSvg />
             </Item>
           </Tooltip>

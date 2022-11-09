@@ -64,28 +64,33 @@ export const Header = ({ bodyRef }) => {
   const cssPath = "../../../out/_next/static/css/8452dc317bf6f2f006fd.css";
 
   // using useEffect for side effect handling
-  useEffect(() => {
-    // handle export html generate
-    const handleExportHtml = () => {
-      const bodyHtml = bodyRef.current;
-      const existingTag = bodyHtml.getElementsByTagName("link");
-      const includes = existingTag.length > 0;
+  // useEffect(() => {
+  //   // handle export html generate
+  //   const handleExportHtml = () => {
+  //     const bodyHtml = bodyRef.current;
+  //     const existingTag = bodyHtml.getElementsByTagName("link");
+  //     const includes = existingTag.length > 0;
 
-      if (!includes) {
-        const link = document.createElement("link");
-        //link attribute set
-        link.setAttribute("href", cssPath);
-        link.setAttribute("rel", "stylesheet");
-        //append child link=======
-        bodyHtml.appendChild(link);
-      }
-      // send html from client to backend
-      // 😊
-      console.log(bodyHtml);
-    };
+  //     if (!includes) {
+  //       const link = document.createElement("link");
+  //       //link attribute set
+  //       link.setAttribute("href", cssPath);
+  //       link.setAttribute("rel", "stylesheet");
+  //       //append child link=======
+  //       bodyHtml.appendChild(link);
+  //     }
+  //     // send html from client to backend
+  //     // 😊
+  //     console.log(bodyHtml);
+  //   };
 
-    buttonRef.current = handleExportHtml;
-  }, []);
+  //   buttonRef.current = handleExportHtml;
+  // }, []);
+
+  const handleExportHtml = () => {
+    const getHtml = bodyRef.current;
+    console.log(getHtml);
+  };
 
   const handleLoadBtn = () => {
     actions.setOptions((options) => (options.enabled = !enabled));
@@ -110,15 +115,17 @@ export const Header = ({ bodyRef }) => {
             </Tooltip>
           </div>
         )}
-        <Button
-          sx={{ marginRight: "20px" }}
-          size="small"
-          variant="contained"
-          color="success"
-          onClick={() => buttonRef.current()}
-        >
-          Export Html
-        </Button>
+        {enabled && (
+          <Button
+            sx={{ marginRight: "20px" }}
+            size="small"
+            variant="contained"
+            color="success"
+            onClick={handleExportHtml}
+          >
+            Export Html
+          </Button>
+        )}
         <div className="flex">
           <Btn
             className={cx([

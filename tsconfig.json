@@ -23,6 +23,11 @@
     "noImplicitAny": false,
     "strictNullChecks": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [, "components/selectors/Button/ButtonSettings.jsx"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/selectors/Button/index.jsx"
+  ],
   "exclude": ["node_modules"]
 }

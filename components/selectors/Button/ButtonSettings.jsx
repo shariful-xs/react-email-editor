@@ -2,24 +2,28 @@ import React from "react";
 
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
+import SetLink from "../../editor/Toolbar/SetLink";
 
-export const ContainerSettings = () => {
+export const ButtonSettings = () => {
   return (
     <React.Fragment>
       <ToolbarSection
         title="Dimensions"
         props={["width", "height"]}
-        summary={({ width, height }: any) => {
+        summary={({ width, height }) => {
           return `${width || 0} x ${height || 0}`;
         }}
       >
         <ToolbarItem propKey="width" type="text" label="Width" />
         <ToolbarItem propKey="height" type="text" label="Height" />
       </ToolbarSection>
+      <ToolbarSection title="Action">
+        <SetLink />
+      </ToolbarSection>
       <ToolbarSection
         title="Colors"
         props={["background", "color"]}
-        summary={({ background, color }: any) => {
+        summary={({ background, color }) => {
           return (
             <div className="flex flex-row-reverse">
               <div
@@ -50,10 +54,17 @@ export const ContainerSettings = () => {
         />
         <ToolbarItem full={true} propKey="color" type="color" label="Text" />
       </ToolbarSection>
+      <ToolbarSection title="Alignment">
+        <ToolbarItem propKey="textAlign" type="radio" label="Text Align">
+          <ToolbarRadio value="left" label="Left" />
+          <ToolbarRadio value="center" label="Center" />
+          <ToolbarRadio value="right" label="Right" />
+        </ToolbarItem>
+      </ToolbarSection>
       <ToolbarSection
         title="Margin"
         props={["margin"]}
-        summary={({ margin }: any) => {
+        summary={({ margin }) => {
           return `${margin[0] || 0}px ${margin[1] || 0}px ${margin[2] || 0}px ${
             margin[3] || 0
           }px`;
@@ -67,7 +78,7 @@ export const ContainerSettings = () => {
       <ToolbarSection
         title="Padding"
         props={["padding"]}
-        summary={({ padding }: any) => {
+        summary={({ padding }) => {
           return `${padding[0] || 0}px ${padding[1] || 0}px ${
             padding[2] || 0
           }px ${padding[3] || 0}px`;
@@ -78,46 +89,44 @@ export const ContainerSettings = () => {
         <ToolbarItem propKey="padding" index={2} type="slider" label="Bottom" />
         <ToolbarItem propKey="padding" index={3} type="slider" label="Left" />
       </ToolbarSection>
-      <ToolbarSection title="Decoration" props={["radius", "shadow"]}>
+      <ToolbarSection
+        title="borderRadius"
+        props={["borderRadius"]}
+        summary={({ borderRadius }) => {
+          return `${borderRadius[0] || 0}px ${borderRadius[1] || 0}px ${
+            borderRadius[2] || 0
+          }px ${borderRadius[3] || 0}px`;
+        }}
+      >
         <ToolbarItem
-          full={true}
-          propKey="radius"
+          propKey="borderRadius"
+          index={0}
           type="slider"
-          label="Radius"
+          label="Top"
         />
         <ToolbarItem
-          full={true}
-          propKey="shadow"
+          propKey="borderRadius"
+          index={1}
           type="slider"
-          label="Shadow"
+          label="Right"
+        />
+        <ToolbarItem
+          propKey="borderRadius"
+          index={2}
+          type="slider"
+          label="Bottom"
+        />
+        <ToolbarItem
+          propKey="borderRadius"
+          index={3}
+          type="slider"
+          label="Left"
         />
       </ToolbarSection>
-      <ToolbarSection title="Alignment">
-        <ToolbarItem
-          propKey="flexDirection"
-          type="radio"
-          label="Flex Direction"
-        >
-          <ToolbarRadio value="row" label="Row" />
-          <ToolbarRadio value="column" label="Column" />
-        </ToolbarItem>
-        <ToolbarItem propKey="fillSpace" type="radio" label="Fill space">
-          <ToolbarRadio value="yes" label="Yes" />
-          <ToolbarRadio value="no" label="No" />
-        </ToolbarItem>
-        <ToolbarItem propKey="alignItems" type="radio" label="Align Items">
-          <ToolbarRadio value="flex-start" label="Flex start" />
-          <ToolbarRadio value="center" label="Center" />
-          <ToolbarRadio value="flex-end" label="Flex end" />
-        </ToolbarItem>
-        <ToolbarItem
-          propKey="justifyContent"
-          type="radio"
-          label="Justify Content"
-        >
-          <ToolbarRadio value="flex-start" label="Flex start" />
-          <ToolbarRadio value="center" label="Center" />
-          <ToolbarRadio value="flex-end" label="Flex end" />
+      <ToolbarSection title="Decoration">
+        <ToolbarItem propKey="buttonStyle" type="radio" label="Style">
+          <ToolbarRadio value="full" label="Full" />
+          <ToolbarRadio value="outline" label="Outline" />
         </ToolbarItem>
       </ToolbarSection>
     </React.Fragment>
