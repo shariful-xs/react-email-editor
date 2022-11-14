@@ -8,6 +8,7 @@ import { ToolbarTextInput } from "./ToolbarTextInput";
 import InputBox from "./InputBox";
 import Date from "./Date";
 import ListStyle from "./ListStyle";
+import SelectTag from "./SelectTag";
 
 const iOSBoxShadow =
   "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
@@ -64,17 +65,6 @@ const SliderStyled = withStyles({
   },
 })(Slider);
 
-export type ToolbarItemProps = {
-  prefix?: string;
-  label?: string;
-  full?: boolean;
-  propKey?: string;
-  index?: number;
-  children?: React.ReactNode;
-  type: string;
-  onChange?: (value: any) => any;
-};
-
 export const ToolbarItem = ({
   full = false,
   propKey,
@@ -82,7 +72,7 @@ export const ToolbarItem = ({
   onChange,
   index,
   ...props
-}: ToolbarItemProps) => {
+}) => {
   const {
     actions: { setProp },
     propValue,
@@ -98,7 +88,7 @@ export const ToolbarItem = ({
             type={type}
             value={value}
             onChange={(value) => {
-              setProp((props: any) => {
+              setProp((props) => {
                 if (Array.isArray(propValue)) {
                   props[propKey][index] = onChange ? onChange(value) : value;
                 } else {
@@ -114,19 +104,15 @@ export const ToolbarItem = ({
             ) : null}
             <SliderStyled
               value={parseInt(value) || 0}
-              onChange={
-                ((_, value: number) => {
-                  setProp((props: any) => {
-                    if (Array.isArray(propValue)) {
-                      props[propKey][index] = onChange
-                        ? onChange(value)
-                        : value;
-                    } else {
-                      props[propKey] = onChange ? onChange(value) : value;
-                    }
-                  }, 1000);
-                }) as any
-              }
+              onChange={(_, value) => {
+                setProp((props) => {
+                  if (Array.isArray(propValue)) {
+                    props[propKey][index] = onChange ? onChange(value) : value;
+                  } else {
+                    props[propKey] = onChange ? onChange(value) : value;
+                  }
+                }, 1000);
+              }}
             />
           </>
         ) : type === "radio" ? (
@@ -138,7 +124,7 @@ export const ToolbarItem = ({
               value={value || 0}
               onChange={(e) => {
                 const value = e.target.value;
-                setProp((props: any) => {
+                setProp((props) => {
                   props[propKey] = onChange ? onChange(value) : value;
                 });
               }}
@@ -151,8 +137,7 @@ export const ToolbarItem = ({
             value={value || ""}
             onChange={(value) =>
               setProp(
-                (props: any) =>
-                  (props[propKey] = onChange ? onChange(value) : value)
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
               )
             }
             {...props}
@@ -160,11 +145,10 @@ export const ToolbarItem = ({
         ) : type === "box" ? (
           <InputBox
             title={props.label}
-            value={value || "22"}
+            value={value || "24"}
             onChange={(value) =>
               setProp(
-                (props: any) =>
-                  (props[propKey] = onChange ? onChange(value) : value)
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
               )
             }
             {...props}
@@ -174,8 +158,7 @@ export const ToolbarItem = ({
             title={props.label}
             onChange={(value) =>
               setProp(
-                (props: any) =>
-                  (props[propKey] = onChange ? onChange(value) : value)
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
               )
             }
             {...props}
@@ -186,8 +169,18 @@ export const ToolbarItem = ({
             value={value || "circle"}
             onchange={(value) =>
               setProp(
-                (props: any) =>
-                  (props[propKey] = onChange ? onChange(value) : value)
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
+              )
+            }
+            {...props}
+          />
+        ) : type === "selectTag" ? (
+          <SelectTag
+            title={props.label}
+            value={value || ""}
+            onchange={(value) =>
+              setProp(
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
               )
             }
             {...props}

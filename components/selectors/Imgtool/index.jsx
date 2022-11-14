@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import FileUpload from "react-material-file-upload";
-
+import React from "react";
 import { ImgToolSettings } from "./ImgtoolSetting";
-import { useDispatch, useSelector } from "react-redux";
-import { setPicture } from "../../../rtk/features/picture/pictureSlice";
-
+import FileUpload from "../../editor/Toolbar/FileUpload";
 import { Resizer } from "../Resizer";
-
+import { useSelector } from "react-redux";
 const defaultProps = {
   padding: ["0", "0", "0", "0"],
   margin: ["0", "0", "0", "0"],
@@ -15,7 +11,6 @@ const defaultProps = {
 };
 
 export const ImgTool = (props) => {
-  const dispatch = useDispatch();
   const file = useSelector((state) => state.picutre.file);
 
   props = {
@@ -23,11 +18,6 @@ export const ImgTool = (props) => {
     ...props,
   };
   const { padding, margin, children } = props;
-  //file upload handler
-  const handleFileUpload = (files) => {
-    const newFile = URL.createObjectURL(files[0]);
-    dispatch(setPicture(newFile));
-  };
 
   //checking height
   const containerHeight = children ? "100%" : "200px";
@@ -45,17 +35,7 @@ export const ImgTool = (props) => {
           margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
         }}
       >
-        {!file && (
-          <div
-            style={{
-              width: "310px",
-              height: "200px",
-              margin: "0 auto",
-            }}
-          >
-            <FileUpload onChange={handleFileUpload} />
-          </div>
-        )}
+        {!file && <FileUpload />}
         {children}
       </div>
     </Resizer>

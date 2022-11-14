@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SocailGroupSettings } from "./SocilGroupSettings";
 import { BsFacebook, BsYoutube, BsTwitter } from "react-icons/bs";
 import Tooltip from "@mui/material/Tooltip";
@@ -36,7 +36,8 @@ export const SocailGroup = (props) => {
 
   const renderItem = myIcons.length > 0 ? myIcons : initItems;
 
-  const { alignItems, flexDirection, justifyContent, iconWidth } = props;
+  const { alignItems, flexDirection, justifyContent, iconWidth, gap, color } =
+    props;
 
   return (
     <div
@@ -47,6 +48,8 @@ export const SocailGroup = (props) => {
         flexDirection: flexDirection,
         justifyContent: justifyContent,
         alignItems: alignItems,
+        color: `rgba(${Object.values(color)})`,
+        gap: `${gap}px`,
         cursor: "pointer",
       }}
     >
@@ -65,6 +68,11 @@ export const SocailGroup = (props) => {
 
 SocailGroup.craft = {
   displayName: "Socail Group",
+  props: {
+    iconWidth: "24",
+    gap: "20",
+    color: { r: 99, g: 99, b: 99, a: 1 },
+  },
   rules: {
     canDrag: () => true,
   },

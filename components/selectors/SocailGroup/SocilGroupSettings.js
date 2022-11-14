@@ -9,14 +9,13 @@ export const SocailGroupSettings = () => {
       <ToolbarSection title="Icons">
         <IconsList />
       </ToolbarSection>
-      <ToolbarSection title="General">
-        <ToolbarItem propKey="TextAlign" type="radio" label="Text Align">
-          <div className="flex items-center">
-            <ToolbarRadio value="left" label="Left" />
-            <ToolbarRadio value="center" label="Center" />
-            <ToolbarRadio value="right" label="Right" />
-          </div>
-        </ToolbarItem>
+      <ToolbarSection title="Colors">
+        <ToolbarItem
+          full={true}
+          propKey="color"
+          type="color"
+          label="Icon Color"
+        />
       </ToolbarSection>
       <ToolbarSection title="Alignment">
         <ToolbarItem
@@ -42,6 +41,7 @@ export const SocailGroupSettings = () => {
           <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
         <ToolbarItem propKey="iconWidth" type="box" label="Icon Width" />
+        <ToolbarItem full={true} propKey="gap" type="slider" label="Gap" />
       </ToolbarSection>
     </React.Fragment>
   );

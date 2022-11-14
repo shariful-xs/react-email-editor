@@ -1,27 +1,22 @@
 import React from "react";
 
-const ListStyle = ({ title, value, onchange }: any) => {
-  const listStyles = [
-    "none",
-    "disc",
-    "circle",
-    "square",
-    "decimal",
-    "decimal-leading-zero",
-    "lower-roman",
-    "upper-roman",
-    "lower-greek",
-    "lower-latin",
-    "upper-latin",
-    "armenian",
-    "georgian",
-    "lower-alpha",
-    "upper-alpha",
+const SelectTag = ({ title, value, onchange }) => {
+  const selectTags = [
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "p",
+    "b",
+    "i",
+    "span",
   ];
 
   return (
     <>
-      <label className="text-sm" htmlFor="listStyle">
+      <label className="text-sm" htmlFor="selectTag">
         {title}
       </label>
       <select
@@ -37,7 +32,7 @@ const ListStyle = ({ title, value, onchange }: any) => {
         value={value}
         onChange={(event) => onchange(event.target.value)}
       >
-        {listStyles.map((value, index) => (
+        {selectTags.map((value, index) => (
           <option key={index} value={value}>
             {value}
           </option>
@@ -47,4 +42,4 @@ const ListStyle = ({ title, value, onchange }: any) => {
   );
 };
 
-export default ListStyle;
+export default SelectTag;

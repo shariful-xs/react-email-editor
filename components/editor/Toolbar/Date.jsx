@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
-const Date = ({ title, onChange }: any) => {
+const Date = ({ title, onChange }) => {
   return (
     <Stack component="form" noValidate spacing={3}>
       <TextField

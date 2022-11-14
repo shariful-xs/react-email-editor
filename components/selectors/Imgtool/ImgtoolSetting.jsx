@@ -1,20 +1,12 @@
 import React from "react";
-import FileUpload from "react-material-file-upload";
-import { useDispatch } from "react-redux";
-import { setPicture } from "../../../rtk/features/picture/pictureSlice";
 import { ToolbarSection, ToolbarItem } from "../../editor";
-import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
+import FileUpload from "../../editor/Toolbar/FileUpload";
 
 export const ImgToolSettings = () => {
-  const dispatch = useDispatch();
-  const handleFileUpload = (files) => {
-    const newFile = URL.createObjectURL(files[0]);
-    dispatch(setPicture(newFile));
-  };
   return (
     <React.Fragment>
-      <ToolbarSection title="Upload">
-        <FileUpload onChange={handleFileUpload} />
+      <ToolbarSection title="File_Upload">
+        <FileUpload />
       </ToolbarSection>
       <ToolbarSection
         title="Dimensions"

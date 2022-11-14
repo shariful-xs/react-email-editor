@@ -26,6 +26,20 @@ export const Button = (props) => {
     color,
     textAlign,
   } = props;
+  const customBtnStyle = {
+    display: "inline-block",
+    width: width,
+    height: height,
+    textDecoration: "none",
+    margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
+    padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
+    backgroundColor: `rgba(${Object.values(props.background)})`,
+    border:
+      buttonStyle === "outline"
+        ? `1px solid rgba(${Object.values(props.background)})`
+        : null,
+    borderRadius: `${borderRadius[0]}px ${borderRadius[1]}px ${borderRadius[2]}px ${borderRadius[3]}px`,
+  };
 
   return (
     <div
@@ -34,24 +48,7 @@ export const Button = (props) => {
         textAlign: textAlign,
       }}
     >
-      <a
-        href={value ? value : "#"}
-        style={{
-          display: "inline-block",
-          width: width,
-          height: height,
-          textDecoration: "none",
-          margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
-          padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
-          backgroundColor: `rgba(${Object.values(props.background)})`,
-          border:
-            buttonStyle === "outline"
-              ? `1px solid rgba(${Object.values(props.background)})`
-              : null,
-          borderRadius: `${borderRadius[0]}px ${borderRadius[1]}px ${borderRadius[2]}px ${borderRadius[3]}px`,
-        }}
-        ref={connect}
-      >
+      <a href={value ? value : "#"} style={customBtnStyle} ref={connect}>
         <Text {...textComponent} text={text} color={color} />
       </a>
     </div>

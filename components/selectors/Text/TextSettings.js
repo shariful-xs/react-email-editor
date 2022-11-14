@@ -1,17 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import { capitalize, weightDescription } from '../../../utils/text';
-import { ToolbarSection, ToolbarItem } from '../../editor';
-import { ToolbarRadio } from '../../editor/Toolbar/ToolbarRadio';
+import { capitalize, weightDescription } from "../../../utils/text";
+import { ToolbarSection, ToolbarItem } from "../../editor";
+import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 
 export const TextSettings = () => {
   return (
     <React.Fragment>
+      <ToolbarSection title="Tags">
+        <ToolbarItem
+          full={true}
+          propKey="tag"
+          type="selectTag"
+          label="Select Tag"
+        />
+      </ToolbarSection>
       <ToolbarSection
         title="Typography"
-        props={['fontSize', 'fontWeight', 'textAlign']}
-        summary={({ fontSize, fontWeight, textAlign }: any) => {
-          return `${fontSize || ''}, ${weightDescription(
+        props={["fontSize", "fontWeight", "textAlign"]}
+        summary={({ fontSize, fontWeight, textAlign }) => {
+          return `${fontSize || ""}, ${weightDescription(
             fontWeight
           )}, ${capitalize(textAlign)}`;
         }}
@@ -35,8 +43,8 @@ export const TextSettings = () => {
       </ToolbarSection>
       <ToolbarSection
         title="Margin"
-        props={['margin']}
-        summary={({ margin }: any) => {
+        props={["margin"]}
+        summary={({ margin }) => {
           return `${margin[0] || 0}px ${margin[1] || 0}px ${margin[2] || 0}px ${
             margin[3] || 0
           }px`;
@@ -49,8 +57,8 @@ export const TextSettings = () => {
       </ToolbarSection>
       <ToolbarSection
         title="Appearance"
-        props={['color', 'shadow']}
-        summary={({ color, shadow }: any) => {
+        props={["color", "shadow"]}
+        summary={({ color, shadow }) => {
           return (
             <div className="fletext-right">
               <p

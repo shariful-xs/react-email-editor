@@ -1,7 +1,22 @@
 import { useEditor } from "@craftjs/core";
-import { Tooltip } from "@material-ui/core";
 import cx from "classnames";
-import React, { useEffect, useRef } from "react";
+import {
+  Tooltip,
+  Box,
+  FormControlLabel,
+  Switch,
+  Grid,
+  Button as MaterialButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  TextField,
+  Snackbar,
+} from "@material-ui/core";
+
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 
@@ -9,6 +24,8 @@ import Checkmark from "../../../public/icons/check.svg";
 import Customize from "../../../public/icons/customize.svg";
 import RedoSvg from "../../../public/icons/toolbox/redo.svg";
 import UndoSvg from "../../../public/icons/toolbox/undo.svg";
+import lz from "lzutf8";
+
 const HeaderDiv = styled.div`
   width: 100%;
   height: 45px;
@@ -60,42 +77,45 @@ export const Header = ({ bodyRef }) => {
     })
   );
 
-  const buttonRef = useRef(null);
-  const cssPath = "../../../out/_next/static/css/8452dc317bf6f2f006fd.css";
+  // useEffect function for fetch the body data in editor
+  useEffect(() => {
+    fetch("http://localhost:5000/email")
+      .then((res) => res.json())
+      .then((data) => data?.html);
+  }, []);
 
-  // using useEffect for side effect handling
-  // useEffect(() => {
-  //   // handle export html generate
-  //   const handleExportHtml = () => {
-  //     const bodyHtml = bodyRef.current;
-  //     const existingTag = bodyHtml.getElementsByTagName("link");
-  //     const includes = existingTag.length > 0;
-
-  //     if (!includes) {
-  //       const link = document.createElement("link");
-  //       //link attribute set
-  //       link.setAttribute("href", cssPath);
-  //       link.setAttribute("rel", "stylesheet");
-  //       //append child link=======
-  //       bodyHtml.appendChild(link);
-  //     }
-  //     // send html from client to backend
-  //     // 😊
-  //     console.log(bodyHtml);
-  //   };
-
-  //   buttonRef.current = handleExportHtml;
-  // }, []);
-
+  // handleExportHtml function work -> html data post client side to server side
   const handleExportHtml = () => {
+    // get current html
     const getHtml = bodyRef.current;
-    console.log(getHtml);
+    const html = getHtml.outerHTML;
+    fetch("http://localhost:5000/email", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ html }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
-
-  const handleLoadBtn = () => {
+  // data save function
+  const handleSaveData = () => {
+    // enable editor or disenable
     actions.setOptions((options) => (options.enabled = !enabled));
-    const json = query.serialize();
-    // console.log(json);
+    // if editor enabled then run the code execute
+    if (enabled) {
+      const currentJson = query.serialize();
+      const draft = lz.encodeBase64(lz.compress(currentJson));
+      // send copystate client side to  server side
+      fetch("http://localhost:5000/email-template", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ draft }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -115,6 +135,7 @@ export const Header = ({ bodyRef }) => {
             </Tooltip>
           </div>
         )}
+        {/* export html */}
         {enabled && (
           <Button
             sx={{ marginRight: "20px" }}
@@ -135,10 +156,10 @@ export const Header = ({ bodyRef }) => {
                 "bg-primary": !enabled,
               },
             ])}
-            onClick={handleLoadBtn}
+            onClick={handleSaveData}
           >
             {enabled ? <Checkmark /> : <Customize />}
-            {enabled ? "Finish Editing" : "Edit"}
+            {enabled ? "Saved" : "Edit"}
           </Btn>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputBox = ({ title, value, onChange }:any) => {
+const InputBox = ({ title, value, onChange }) => {
   return (
     <div>
       <label className="text-sm" htmlFor="inputBox">
@@ -8,7 +8,7 @@ const InputBox = ({ title, value, onChange }:any) => {
       </label>
       <input
         style={{
-          width:"60px",
+          width: "60px",
           outline: 0,
         }}
         value={value}

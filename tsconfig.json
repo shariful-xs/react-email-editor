@@ -23,11 +23,29 @@
     "noImplicitAny": false,
     "strictNullChecks": false
   },
-  "include": [, "components/selectors/Button/ButtonSettings.jsx"
+  "include": [
+    "components/selectors/Button/ButtonSettings.jsx",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/selectors/Button/index.jsx"
+    "components/selectors/Button/index.jsx",
+    "components/selectors/Video/index.jsx",
+    "components/selectors/Text/TextSettings.js",
+    "components/selectors/Video/VideoSettings.js",
+    "components/selectors/Text/index.jsx",
+    "components/editor/Toolbar/ToolbarItem.js",
+    "components/editor/Toolbar/Date.jsx",
+    "components/editor/Toolbar/index.jsx",
+    "components/editor/Toolbar/ListStyle.jsx",
+    "components/editor/Toolbar/InputBox.jsx",
+    "components/editor/Toolbar/SelectTag.jsx",
+    "components/editor/Toolbar/SetLink.jsx",
+    "components/editor/Toolbar/ToolbarRadio.jsx",
+    "components/editor/Toolbar/ToolbarDropdown.jsx",
+    "components/editor/Toolbar/ToolbarSection.jsx",
+    "components/editor/Toolbar/ToolbarTextInput.jsx",
+    "components/selectors/Container/index.jsx",
+    "components/selectors/Container/ContainerSettings.js"
   ],
   "exclude": ["node_modules"]
 }

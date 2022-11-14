@@ -2,7 +2,7 @@ import React from "react";
 import style from "./SocailURLCard.module.css";
 import { BiMenu } from "react-icons/bi";
 // import { BsFacebook, BsTwitter } from "react-icons/bs";
-import { useNode } from "@craftjs/core";
+
 import { useSelector, useDispatch } from "react-redux";
 import { addIcon } from "../../../rtk/features/socialIcons/listContainerSlice";
 import {
@@ -10,9 +10,6 @@ import {
   updateInputField,
 } from "../../../rtk/features/socialIcons/socialIconsSlice";
 const SocailURLCard = () => {
-  const {
-    connectors: { connect, drag },
-  } = useNode();
   const dispatch = useDispatch();
   const cardGroup = useSelector((state) => state.socialIcons.items);
 
@@ -33,11 +30,7 @@ const SocailURLCard = () => {
       {cardGroup.length > 0 && <p>Socail Link</p>}
       {cardGroup?.map((card, index) => {
         return (
-          <div
-            ref={(ref) => connect(drag(ref))}
-            className={style.socailCard}
-            key={card?._id}
-          >
+          <div className={style.socailCard} key={card?._id}>
             <div className={`flex items-center ${style.cardHeader}`}>
               <BiMenu />
               {card?.icon && <card.icon />}

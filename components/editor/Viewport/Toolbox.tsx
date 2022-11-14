@@ -6,23 +6,17 @@ import styled from "styled-components";
 import ButtonSvg from "../../../public/icons/toolbox/button.svg";
 import SquareSvg from "../../../public/icons/toolbox/rectangle.svg";
 import TypeSvg from "../../../public/icons/toolbox/text.svg";
-import YoutubeSvg from "../../../public/icons/toolbox/video-line.svg";
 import SocailSvg from "../../../public/icons/toolbox/SocailSvg";
 import GallarySvg from "../../../public/icons/toolbox/GallarySvg";
 import DividerSvg from "../../../public/icons/toolbox/DividerSvg";
-import ColumnSvg from "../../../public/icons/toolbox/ColumnSvg";
-import TimerSvg from "../../../public/icons/toolbox/TimerSvg";
 import ListSvg from "../../../public/icons/toolbox/ListSvg";
 
 import { Button } from "../../selectors/Button";
 import { Container } from "../../selectors/Container";
 import { Text } from "../../selectors/Text";
-import { Video } from "../../selectors/Video";
 import { ImgTool } from "../../selectors/Imgtool";
 import { SocailGroup } from "../../selectors/SocailGroup";
 import { Divider } from "../../selectors/Divider";
-import { Columns } from "../../selectors/Columns";
-import { Timer } from "../../selectors/Timer";
 import { List } from "../../selectors/List";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
@@ -130,20 +124,7 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div ref={(ref) => create(ref, <Video />)}>
-          <Tooltip title="Video" placement="right">
-            <Item
-              style={{
-                background: "#f3edef",
-                borderRadius: "4px",
-              }}
-              className="m-2 py-2 cursor-pointer block"
-              move
-            >
-              <YoutubeSvg />
-            </Item>
-          </Tooltip>
-        </div>
+
         <div
           ref={(ref) => create(ref, <Element canvas is={ImgTool}></Element>)}
         >
@@ -189,48 +170,7 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div
-          ref={(ref) =>
-            create(
-              ref,
-              <Element
-                canvas
-                is={Columns}
-                background={{ r: 255, g: 255, b: 255, a: 1 }}
-                color={{ r: 0, g: 0, b: 0, a: 1 }}
-                width="100%"
-                height="300px"
-              ></Element>
-            )
-          }
-        >
-          <Tooltip title="Column" placement="right">
-            <Item
-              style={{
-                background: "#f3edef",
-                borderRadius: "4px",
-              }}
-              className="m-2 py-2 cursor-pointer block "
-              move
-            >
-              <ColumnSvg />
-            </Item>
-          </Tooltip>
-        </div>
-        <div ref={(ref) => create(ref, <Timer />)}>
-          <Tooltip title="Timer" placement="right">
-            <Item
-              style={{
-                background: "#f3edef",
-                borderRadius: "4px",
-              }}
-              className="m-2 py-2 cursor-pointer block"
-              move
-            >
-              <TimerSvg />
-            </Item>
-          </Tooltip>
-        </div>
+
         <div
           ref={(ref) =>
             create(
