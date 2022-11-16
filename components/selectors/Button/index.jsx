@@ -1,13 +1,13 @@
 import { useNode } from "@craftjs/core";
 
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { ButtonSettings } from "./ButtonSettings";
 
 import { Text } from "../Text";
 
 export const Button = (props) => {
-  const value = useSelector((state) => state.buttonLink.href);
+  // const value = useSelector((state) => state.buttonLink.href);
   const {
     connectors: { connect },
   } = useNode((node) => ({
@@ -25,7 +25,9 @@ export const Button = (props) => {
     textComponent,
     color,
     textAlign,
+    url,
   } = props;
+
   const customBtnStyle = {
     display: "inline-block",
     width: width,
@@ -48,7 +50,7 @@ export const Button = (props) => {
         textAlign: textAlign,
       }}
     >
-      <a href={value ? value : "#"} style={customBtnStyle} ref={connect}>
+      <a href={url ? url : "#"} style={customBtnStyle} ref={connect}>
         <Text {...textComponent} text={text} color={color} />
       </a>
     </div>
@@ -75,3 +77,4 @@ Button.craft = {
     toolbar: ButtonSettings,
   },
 };
+// href={value ? value : "#"}

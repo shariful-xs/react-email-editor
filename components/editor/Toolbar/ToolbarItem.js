@@ -9,6 +9,7 @@ import InputBox from "./InputBox";
 import Date from "./Date";
 import ListStyle from "./ListStyle";
 import SelectTag from "./SelectTag";
+import SetLink from "./SetLink";
 
 const iOSBoxShadow =
   "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
@@ -179,6 +180,17 @@ export const ToolbarItem = ({
             title={props.label}
             value={value || ""}
             onchange={(value) =>
+              setProp(
+                (props) => (props[propKey] = onChange ? onChange(value) : value)
+              )
+            }
+            {...props}
+          />
+        ) : type === "setLink" ? (
+          <SetLink
+            title={props.label}
+            value={value || ""}
+            onChange={(value) =>
               setProp(
                 (props) => (props[propKey] = onChange ? onChange(value) : value)
               )

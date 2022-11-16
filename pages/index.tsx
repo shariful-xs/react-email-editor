@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "../rtk/app/store";
+import { ToastContainer } from "react-toastify";
 
 import { Viewport, RenderNode } from "../components/editor";
 import { Container, Text } from "../components/selectors";
@@ -12,7 +13,7 @@ import { ImgTool } from "../components/selectors/Imgtool";
 import { SocailGroup } from "../components/selectors/SocailGroup";
 import { Divider } from "../components/selectors/Divider";
 import { List } from "../components/selectors/List";
-import lz from "lzutf8";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createMuiTheme({
   typography: {
@@ -40,10 +41,9 @@ function App() {
   // Load save state from server on page load
   useEffect(() => {
     const loadJOSN = async () => {
-      const response = await fetch("http://localhost:5000/email-template");
-      const { draft } = await response.json();
-      const json = lz.decompress(lz.decodeBase64(draft));
-      setDraft(json);
+      const response = await fetch("http://localhost:5000/data");
+      const { object } = await response.json();
+      setDraft(object);
     };
     loadJOSN();
     // isShow function run after 100ms and set the state value true
@@ -65,8 +65,8 @@ function App() {
               List,
             }}
             enabled={false}
-            onRender={RenderNode}
           >
+            <ToastContainer />
             <Viewport>
               {show && (
                 <Frame data={draft}>

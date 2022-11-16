@@ -1,16 +1,31 @@
+import { useNode, useEditor } from "@craftjs/core";
 import React, { useRef } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { setPicture } from "../../../rtk/features/picture/pictureSlice";
+import { imageValidate } from "../../../helpers/validation";
+import { toast } from "react-toastify";
+
 const FileUpload = () => {
+  const {
+    actions: { setProp },
+  } = useNode();
+
+  const { enabled } = useEditor((state) => ({
+    enabled: state.options.enabled,
+  }));
+
   const inputFieldRef = useRef(null);
-  const dispatch = useDispatch();
 
   //handle input file changes
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    const newFile = URL.createObjectURL(file);
-    dispatch(setPicture(newFile));
+    if (!imageValidate(file)) {
+      toast.error("Please select file like jpg,jpeg,png,gif", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      const newFile = URL.createObjectURL(file);
+      setProp((props) => (props.picture = newFile));
+    }
   };
   //   upload button work on handle file change funcition
   const handleUploadBtn = () => {
@@ -49,6 +64,7 @@ const FileUpload = () => {
         style={{
           display: "none",
         }}
+        disabled={!enabled}
       />
 
       <button

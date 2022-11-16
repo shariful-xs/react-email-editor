@@ -77,44 +77,37 @@ export const Header = ({ bodyRef }) => {
     })
   );
 
-  // useEffect function for fetch the body data in editor
+  // useEffect hooks use for fetch the editor child data from server side
   useEffect(() => {
-    fetch("http://localhost:5000/email")
+    fetch("http://localhost:5000/data")
       .then((res) => res.json())
       .then((data) => data?.html);
   }, []);
 
-  // handleExportHtml function work -> html data post client side to server side
-  const handleExportHtml = () => {
-    // get current html
+  // handleData function work -> data send from client side to server side
+
+  const handleData = () => {
+    const object = query.serialize();
     const getHtml = bodyRef.current;
     const html = getHtml.outerHTML;
-    fetch("http://localhost:5000/email", {
+
+    fetch("http://localhost:5000/data", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ html }),
+      body: JSON.stringify({ html, object }),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   };
+
   // data save function
   const handleSaveData = () => {
-    // enable editor or disenable
+    // enabled editor or disabled
     actions.setOptions((options) => (options.enabled = !enabled));
     // if editor enabled then run the code execute
     if (enabled) {
-      const currentJson = query.serialize();
-      const draft = lz.encodeBase64(lz.compress(currentJson));
-      // send copystate client side to  server side
-      fetch("http://localhost:5000/email-template", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ draft }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      handleData();
     }
   };
 
@@ -135,18 +128,7 @@ export const Header = ({ bodyRef }) => {
             </Tooltip>
           </div>
         )}
-        {/* export html */}
-        {enabled && (
-          <Button
-            sx={{ marginRight: "20px" }}
-            size="small"
-            variant="contained"
-            color="success"
-            onClick={handleExportHtml}
-          >
-            Export Html
-          </Button>
-        )}
+
         <div className="flex">
           <Btn
             className={cx([

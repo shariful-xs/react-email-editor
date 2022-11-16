@@ -1,26 +1,26 @@
 import React from "react";
 import { SocailGroupSettings } from "./SocilGroupSettings";
-import { BsFacebook, BsYoutube, BsTwitter } from "react-icons/bs";
+// import { BsFacebook, BsYoutube, BsTwitter } from "react-icons/bs";
 import Tooltip from "@mui/material/Tooltip";
 import { useNode } from "@craftjs/core";
-import { useSelector } from "react-redux";
+
 const initItems = [
   {
     _id: `${Date.now() + Math.random() * 99}`,
     name: "Facebook",
-    icon: BsFacebook,
+    icon: "https://i.ibb.co/56Wg7v0/icons8-facebook-35.png",
     url: "https://www.facebook.com/",
   },
   {
     _id: `${Date.now() + Math.random() * 99}`,
     name: "Twiter",
-    icon: BsTwitter,
+    icon: "https://i.ibb.co/0V9wCBC/icons8-twitter-35.png",
     url: "https://twitter.com/login",
   },
   {
     _id: `${Date.now() + Math.random() * 99}`,
     name: "Yout Tube",
-    icon: BsYoutube,
+    icon: "https://i.ibb.co/7jpgKfq/icons8-youtube-35.png",
     url: "",
   },
 ];
@@ -31,14 +31,18 @@ export const SocailGroup = (props) => {
   } = useNode((node) => ({
     selected: node.events.selected,
   }));
+  const {
+    alignItems,
+    flexDirection,
+    justifyContent,
+    iconWidth,
+    gap,
+    color,
+    socailIconList,
+  } = props;
 
-  const myIcons = useSelector((state) => state.socialIcons.items);
-
-  const renderItem = myIcons.length > 0 ? myIcons : initItems;
-
-  const { alignItems, flexDirection, justifyContent, iconWidth, gap, color } =
-    props;
-
+  const renderItem = socailIconList?.length > 0 ? socailIconList : initItems;
+  // console.log("index component render");
   return (
     <div
       ref={connect}
@@ -55,9 +59,15 @@ export const SocailGroup = (props) => {
     >
       {renderItem.map((item) => {
         return (
-          <Tooltip title={item.name} placement="top" key={item._id}>
-            <a href={`${item.url}`} target="_blank">
-              {<item.icon size={iconWidth} />}
+          <Tooltip title={item?.name} placement="top" key={item?._id}>
+            <a href={item?.url ? item?.url : "#"}>
+              <img
+                style={{
+                  width: `${iconWidth}px`,
+                }}
+                src={item?.icon}
+                alt={item?.name}
+              />
             </a>
           </Tooltip>
         );
@@ -69,7 +79,7 @@ export const SocailGroup = (props) => {
 SocailGroup.craft = {
   displayName: "Socail Group",
   props: {
-    iconWidth: "24",
+    iconWidth: "30",
     gap: "20",
     color: { r: 99, g: 99, b: 99, a: 1 },
   },

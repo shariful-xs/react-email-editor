@@ -2,7 +2,7 @@ import React from "react";
 
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
-import SetLink from "../../editor/Toolbar/SetLink";
+// import SetLink from "../../editor/Toolbar/SetLink";
 
 export const ButtonSettings = () => {
   return (
@@ -18,7 +18,8 @@ export const ButtonSettings = () => {
         <ToolbarItem propKey="height" type="text" label="Height" />
       </ToolbarSection>
       <ToolbarSection title="Action">
-        <SetLink />
+        {/* <SetLink /> */}
+        <ToolbarItem propKey="url" type="setLink" label="Set Url" />
       </ToolbarSection>
       <ToolbarSection
         title="Colors"

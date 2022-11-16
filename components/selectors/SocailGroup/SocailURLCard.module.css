@@ -1,37 +1,46 @@
-.socailCard{
-    padding: 6px 8px;
-    margin: 6px 0;
-    border: 1px solid #808080ab;
-    border-radius: 4px;
+.socailCard {
+  padding: 6px 8px;
+  margin: 6px 0;
+  border: 1px solid #cec1c1ab;
+  border-radius: 4px;
 }
-.cardHeader{
- gap: 15px;
+.cardHeader {
+  gap: 15px;
 }
-.inputControl{
-    width: 100%;
-    display: flex;
-    position: relative;
-    border: 1px solid #80808086;
-    margin: 6px 0;
-    border-radius: 4px;
+.inputControl {
+  width: 100%;
+  display: flex;
+  position: relative;
+  border: 1px solid #80808086;
+  margin: 6px 0;
+  border-radius: 4px;
 }
-.inputControl p{
-    background-color: #80808056;
-    padding: 3px 8px;
-    font-size: 13px;
+.inputControl p {
+  background-color: #80808056;
+  padding: 3px 8px;
+  font-size: 13px;
 }
-.inputControl input{
-    display: block;
-    width: 100%;
-    padding: 0 6px;
+.inputControl input {
+  display: block;
+  width: 100%;
+  padding: 0 6px;
 }
-.inputControl input:focus{
-    outline: none;
+.inputControl input:focus {
+  outline: none;
+}
+.iconSize {
+  width: 30px;
+}
+.errorMsg {
+  color: #ff0000e3;
+  font-weight: 500;
 }
 
-.delete{
-    margin-bottom: 0;
-    color: #ff0000e3;
-    font-size: 13px;
-    cursor: pointer;
+.trash {
+  color: #ff0000e3;
+  background-color: #cec7c5;
+  border-radius: 100%;
+  padding: 4px;
+  font-size: 24px;
+  cursor: pointer;
 }
