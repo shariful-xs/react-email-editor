@@ -10,6 +10,7 @@ import SocailSvg from "../../../public/icons/toolbox/SocailSvg";
 import GallarySvg from "../../../public/icons/toolbox/GallarySvg";
 import DividerSvg from "../../../public/icons/toolbox/DividerSvg";
 import ListSvg from "../../../public/icons/toolbox/ListSvg";
+import YoutubeSvg from "../../../public/icons/toolbox/video-line.svg";
 
 import { Button } from "../../selectors/Button";
 import { Container } from "../../selectors/Container";
@@ -18,6 +19,7 @@ import { ImgTool } from "../../selectors/Imgtool";
 import { SocailGroup } from "../../selectors/SocailGroup";
 import { Divider } from "../../selectors/Divider";
 import { List } from "../../selectors/List";
+import { Video } from "../../selectors/Video";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -189,6 +191,20 @@ export const Toolbox = () => {
               move
             >
               <ListSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div ref={(ref) => create(ref, <Video />)}>
+          <Tooltip title="Video" placement="right">
+            <Item
+              style={{
+                background: "#f3edef",
+                borderRadius: "4px",
+              }}
+              className="m-2 py-2 cursor-pointer block custom-item-class"
+              move
+            >
+              <YoutubeSvg />
             </Item>
           </Tooltip>
         </div>

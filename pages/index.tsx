@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import { Viewport, RenderNode } from "../components/editor";
 import { Container, Text } from "../components/selectors";
 import { Button } from "../components/selectors/Button";
+import { Video } from "../components/selectors/Video";
 import { ImgTool } from "../components/selectors/Imgtool";
 import { SocailGroup } from "../components/selectors/SocailGroup";
 import { Divider } from "../components/selectors/Divider";
@@ -63,8 +64,10 @@ function App() {
               SocailGroup,
               Divider,
               List,
+              Video,
             }}
             enabled={false}
+            onRender={RenderNode}
           >
             <ToastContainer />
             <Viewport>
