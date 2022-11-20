@@ -30,6 +30,7 @@ export const Text = ({
         setProp((prop) => (prop.text = e.target.value), 500);
       }} // use true to disable editing
       tagName={tag} // Use a custom HTML tag (uses a div by default)
+      className="contentEditable"
       style={{
         width: "100%",
         margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,

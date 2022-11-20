@@ -1,6 +1,5 @@
 import React from "react";
 import { SocailGroupSettings } from "./SocilGroupSettings";
-// import { BsFacebook, BsYoutube, BsTwitter } from "react-icons/bs";
 import Tooltip from "@mui/material/Tooltip";
 import { useNode } from "@craftjs/core";
 
@@ -42,7 +41,7 @@ export const SocailGroup = (props) => {
   } = props;
 
   const renderItem = socailIconList?.length > 0 ? socailIconList : initItems;
-  // console.log("index component render");
+
   return (
     <div
       ref={connect}

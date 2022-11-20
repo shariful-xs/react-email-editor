@@ -57,7 +57,7 @@ const IconsList = () => {
     setProp((props) => (props.socailIconList = cardGroup));
   }, [cardGroup]);
 
-  //  =====Handle Items and Card Group=======//
+  //  =====Handle Items =======//
   const handleItem = (newItem) => {
     // item add in Card
     setCardGroup((prevCards) => [...prevCards, newItem]);
@@ -65,13 +65,13 @@ const IconsList = () => {
     const restItems = items.filter((item) => item._id !== newItem._id);
     setItems(restItems);
   };
-
+  //  =====Handle  Card Group=======//
   const handleCardGroup = (item) => {
+    // add item in list
+    setItems((prevItems) => [...prevItems, item]);
     // remove item from card group
     const restCards = cardGroup.filter((card) => card._id !== item._id);
     setCardGroup(restCards);
-    // add item in list
-    setItems((prevItems) => [...prevItems, item]);
   };
   // =======Handle Input Field =========== //
   const handleInputField = (event, index) => {
@@ -120,7 +120,7 @@ const IconsList = () => {
                 }}
                 onClick={() => handleItem(item)}
                 src={item?.icon}
-                alt=""
+                alt={item?.name}
               />
             </div>
           ))}

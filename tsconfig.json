@@ -45,7 +45,8 @@
     "components/editor/Toolbar/ToolbarSection.jsx",
     "components/editor/Toolbar/ToolbarTextInput.jsx",
     "components/selectors/Container/index.jsx",
-    "components/selectors/Container/ContainerSettings.js"
+    "components/selectors/Container/ContainerSettings.js",
+    "pages/index.jsx"
   ],
   "exclude": ["node_modules"]
 }

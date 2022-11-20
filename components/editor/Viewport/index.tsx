@@ -56,8 +56,10 @@ export const Viewport: React.FC = ({ children }) => {
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
             <div
+              style={{
+                fontFamily: "monospace",
+              }}
               ref={bodyRef}
-              id="bodyHtml"
               className={`relative flex-col flex items-center pt-8`}
             >
               {children}

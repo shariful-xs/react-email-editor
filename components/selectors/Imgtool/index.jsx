@@ -2,7 +2,7 @@ import React from "react";
 import { ImgToolSettings } from "./ImgtoolSetting";
 import FileUpload from "../../editor/Toolbar/FileUpload";
 import { Resizer } from "../Resizer";
-// import { useSelector } from "react-redux";
+
 const defaultProps = {
   padding: ["0", "0", "0", "0"],
   margin: ["0", "0", "0", "0"],
@@ -11,8 +11,6 @@ const defaultProps = {
 };
 
 export const ImgTool = (props) => {
-  // const file = useSelector((state) => state.picutre.file);
-
   props = {
     ...defaultProps,
     ...props,

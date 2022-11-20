@@ -4,7 +4,7 @@ import { BiMenu, BiTrash } from "react-icons/bi";
 const SocailURLCard = ({ cardGroup, handleCardGroup, handleInputField }) => {
   return (
     <div>
-      {cardGroup?.length > 0 && <p>Socail Link</p>}
+      {cardGroup?.length > 0 && <p>Socail Links</p>}
       {cardGroup?.map((card, index) => {
         return (
           <div className={style.socailCard} key={card?._id}>
@@ -12,10 +12,10 @@ const SocailURLCard = ({ cardGroup, handleCardGroup, handleInputField }) => {
               <BiMenu />
               <img
                 className={`${style.iconSize}`}
-                src={card?.icon && card.icon}
-                alt=""
+                src={card?.icon}
+                alt={card?.name}
               />
-              <p className="mb-0">{card.name}</p>
+              <p className="mb-0">{card?.name}</p>
             </div>
             <div className={`${style.inputControl}`}>
               <p className="pb-0">URL</p>

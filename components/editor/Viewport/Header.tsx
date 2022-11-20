@@ -1,30 +1,14 @@
 import { useEditor } from "@craftjs/core";
 import cx from "classnames";
-import {
-  Tooltip,
-  Box,
-  FormControlLabel,
-  Switch,
-  Grid,
-  Button as MaterialButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  TextField,
-  Snackbar,
-} from "@material-ui/core";
+import { Tooltip, Button as MaterialButton } from "@material-ui/core";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 
 import Checkmark from "../../../public/icons/check.svg";
 import Customize from "../../../public/icons/customize.svg";
 import RedoSvg from "../../../public/icons/toolbox/redo.svg";
 import UndoSvg from "../../../public/icons/toolbox/undo.svg";
-import lz from "lzutf8";
 
 const HeaderDiv = styled.div`
   width: 100%;
@@ -89,6 +73,14 @@ export const Header = ({ bodyRef }) => {
   const handleData = () => {
     const object = query.serialize();
     const getHtml = bodyRef.current;
+    const itemsList = getHtml.querySelectorAll(".contentEditable");
+    // if get itemsList(editable content) the run the code and set all item editable content attribute false
+    if (itemsList) {
+      for (const item of itemsList) {
+        item.setAttribute("contenteditable", "false");
+      }
+    }
+
     const html = getHtml.outerHTML;
 
     fetch("http://localhost:5000/data", {
@@ -105,7 +97,7 @@ export const Header = ({ bodyRef }) => {
   const handleSaveData = () => {
     // enabled editor or disabled
     actions.setOptions((options) => (options.enabled = !enabled));
-    // if editor enabled then run the code execute
+    // if editor enabled then run the code
     if (enabled) {
       handleData();
     }

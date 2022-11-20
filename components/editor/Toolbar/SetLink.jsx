@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { urlValidate } from "../../../helpers/validation";
-// import { useDispatch } from "react-redux";
-// import { setUrl } from "../../../rtk/features/button/buttonSlice";
 
 const SetLink = ({ title, value, onChange }) => {
-  // const dispatch = useDispatch();
   const [error, setError] = useState("");
-  //  input field value change detect functioon
+
   const handleInputChange = (event) => {
     const { value } = event.target;
     if (!value) {
@@ -50,5 +47,3 @@ const SetLink = ({ title, value, onChange }) => {
 };
 
 export default SetLink;
-//  onBlur={(e) => dispatch(setUrl(e.target.value))}
-// (e) => onChange(e.target.value)

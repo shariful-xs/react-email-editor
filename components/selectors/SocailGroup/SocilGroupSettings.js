@@ -6,16 +6,11 @@ import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 export const SocailGroupSettings = () => {
   return (
     <React.Fragment>
+      <ToolbarSection title="Icon_Size">
+        <ToolbarItem propKey="iconWidth" type="box" label="Icon Width" />
+      </ToolbarSection>
       <ToolbarSection title="Icons">
         <IconsList />
-      </ToolbarSection>
-      <ToolbarSection title="Colors">
-        <ToolbarItem
-          full={true}
-          propKey="color"
-          type="color"
-          label="Icon Color"
-        />
       </ToolbarSection>
       <ToolbarSection title="Alignment">
         <ToolbarItem
@@ -40,7 +35,6 @@ export const SocailGroupSettings = () => {
           <ToolbarRadio value="center" label="Center" />
           <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
-        <ToolbarItem propKey="iconWidth" type="box" label="Icon Width" />
         <ToolbarItem full={true} propKey="gap" type="slider" label="Gap" />
       </ToolbarSection>
     </React.Fragment>
