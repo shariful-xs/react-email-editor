@@ -74,8 +74,8 @@ export const Header = ({ bodyRef }) => {
     const object = query.serialize();
     const getHtml = bodyRef.current;
     const itemsList = getHtml.querySelectorAll(".contentEditable");
-    // if get itemsList(editable content) the run the code and set all item editable content attribute false
-    if (itemsList) {
+    // if get itemsList length is gretter than 0  (editable content) the run the code and set all item editable content attribute false
+    if (itemsList.length > 0) {
       for (const item of itemsList) {
         item.setAttribute("contenteditable", "false");
       }
@@ -133,7 +133,7 @@ export const Header = ({ bodyRef }) => {
             onClick={handleSaveData}
           >
             {enabled ? <Checkmark /> : <Customize />}
-            {enabled ? "Saved" : "Edit"}
+            {enabled ? "Save" : "Edit"}
           </Btn>
         </div>
       </div>

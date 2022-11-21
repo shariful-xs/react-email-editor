@@ -31,13 +31,6 @@ const theme = createMuiTheme({
 
 function App() {
   const [draft, setDraft] = useState(null);
-  const [show, setShow] = useState(false);
-  // isShow function work to state value true
-  const isShow = () => {
-    setTimeout(() => {
-      setShow((preState) => !preState);
-    }, 1000);
-  };
 
   // Load save state from server on page load
   useEffect(() => {
@@ -47,9 +40,7 @@ function App() {
       setDraft(object);
     };
     loadJOSN();
-    // isShow function run after 100ms and set the state value true
-    isShow();
-  }, []);
+  }, [draft]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,7 +62,7 @@ function App() {
           >
             <ToastContainer />
             <Viewport>
-              {show && (
+              {draft && (
                 <Frame data={draft}>
                   <Element
                     canvas
