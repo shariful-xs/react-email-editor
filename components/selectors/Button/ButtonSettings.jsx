@@ -9,13 +9,12 @@ export const ButtonSettings = () => {
     <React.Fragment>
       <ToolbarSection
         title="Dimensions"
-        props={["width", "height"]}
-        summary={({ width, height }) => {
-          return `${width || 0} x ${height || 0}`;
+        props={["width"]}
+        summary={({ width }) => {
+          return `${width || 0}`;
         }}
       >
-        <ToolbarItem propKey="width" type="text" label="Width" />
-        <ToolbarItem propKey="height" type="text" label="Height" />
+        <ToolbarItem propKey="width" full={true} type="slider" label="Width" />
       </ToolbarSection>
       <ToolbarSection title="Action">
         {/* <SetLink /> */}

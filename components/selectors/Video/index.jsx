@@ -5,8 +5,8 @@ import { VideoSettings } from "./VideoSettings";
 const defaultProps = {
   justifyContent: "center",
   margin: ["0", "0", "0", "0"],
-  width: "300px",
-  height: "100px",
+  width: "18.75rem",
+  height: "9.375rem",
 };
 export const Video = (props) => {
   const { enabled } = useEditor((state) => ({
@@ -38,8 +38,9 @@ export const Video = (props) => {
     >
       <div
         style={{
-          width: width,
-          height: height,
+          minWidth: `${width}`,
+          maxHeight: `${height}`,
+          minHeight: `${height}`,
           background: picture ? `url(${picture})` : `url(${pictureInit})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",

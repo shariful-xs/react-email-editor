@@ -21,7 +21,7 @@ export const List = ({
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
-
+  console.log(fontSize);
   return (
     <>
       <ContentEditable
@@ -37,7 +37,7 @@ export const List = ({
           listStyleType: `${listStyleType}`,
           margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
           color: `rgba(${Object.values(color)})`,
-          fontSize: `${fontSize}px`,
+          fontSize: `${fontSize}rem`,
           textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
           fontWeight,
           textAlign,
@@ -50,13 +50,13 @@ export const List = ({
 List.craft = {
   displayName: "List",
   props: {
-    fontSize: "15",
+    fontSize: "1",
     textAlign: "left",
     fontWeight: "500",
     color: { r: 92, g: 90, b: 90, a: 1 },
     margin: [0, 0, 0, 0],
     shadow: 0,
-    text: "Text",
+    text: "New List Create",
   },
   related: {
     toolbar: ListSettings,

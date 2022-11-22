@@ -14,7 +14,10 @@ export const ImgToolSettings = () => {
         summary={({ width, height }) => {
           return `${width || 0} x ${height || 0}`;
         }}
-      />
+      >
+        <ToolbarItem propKey="width" type="text" label="Width" />
+        <ToolbarItem propKey="height" type="text" label="Height" />
+      </ToolbarSection>
       <ToolbarSection
         title="Margin"
         props={["margin"]}

@@ -7,6 +7,7 @@ import { store } from "../rtk/app/store";
 import { ToastContainer } from "react-toastify";
 
 import { Viewport, RenderNode } from "../components/editor";
+import { FrameContainer } from "../components/selectors/FrameContainer";
 import { Container, Text } from "../components/selectors";
 import { Button } from "../components/selectors/Button";
 import { Video } from "../components/selectors/Video";
@@ -48,6 +49,7 @@ function App() {
         <div className="h-screen">
           <Editor
             resolver={{
+              FrameContainer,
               Container,
               Text,
               Button,
@@ -66,9 +68,18 @@ function App() {
                 <Frame data={draft}>
                   <Element
                     canvas
-                    is={Container}
-                    width="800px"
-                    height="auto"
+                    is={FrameContainer}
+                    background={{ r: 255, g: 255, b: 255, a: 1 }}
+                    padding={["40", "40", "40", "40"]}
+                    custom={{ displayName: "App" }}
+                  ></Element>
+                </Frame>
+              )}
+              {!draft && (
+                <Frame>
+                  <Element
+                    canvas
+                    is={FrameContainer}
                     background={{ r: 255, g: 255, b: 255, a: 1 }}
                     padding={["40", "40", "40", "40"]}
                     custom={{ displayName: "App" }}

@@ -15,7 +15,7 @@ const defaultProps = {
   color: { r: 0, g: 0, b: 0, a: 1 },
   shadow: 0,
   radius: 0,
-  width: "100%",
+  width: "600px",
   height: "auto",
 };
 

@@ -107,15 +107,15 @@ const IconsList = () => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "10px",
-            marginTop: "10px",
+            gap: "0.625rem",
+            marginTop: "0.625rem",
           }}
         >
           {items.map((item) => (
             <div key={item._id}>
               <img
                 style={{
-                  width: "30px",
+                  width: "1.875rem",
                   cursor: "pointer",
                 }}
                 onClick={() => handleItem(item)}

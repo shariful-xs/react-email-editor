@@ -21,6 +21,7 @@ export const Text = ({
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
+
   return (
     <ContentEditable
       innerRef={connect}
@@ -32,10 +33,9 @@ export const Text = ({
       tagName={tag} // Use a custom HTML tag (uses a div by default)
       className="contentEditable"
       style={{
-        width: "100%",
         margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
         color: `rgba(${Object.values(color)})`,
-        fontSize: `${fontSize}px`,
+        fontSize: `${fontSize}rem`,
         textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
         fontWeight,
         textAlign,
@@ -53,6 +53,7 @@ Text.craft = {
     margin: [0, 0, 0, 0],
     shadow: 0,
     text: "Text",
+    tag: "p",
   },
   related: {
     toolbar: TextSettings,

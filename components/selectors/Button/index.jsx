@@ -21,7 +21,6 @@ export const Button = (props) => {
     borderRadius,
     buttonStyle,
     width,
-    height,
     textComponent,
     color,
     textAlign,
@@ -30,8 +29,7 @@ export const Button = (props) => {
 
   const customBtnStyle = {
     display: "inline-block",
-    width: width,
-    height: height,
+    width: `${width}rem`,
     textDecoration: "none",
     margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
     padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
@@ -77,4 +75,3 @@ Button.craft = {
     toolbar: ButtonSettings,
   },
 };
-// href={value ? value : "#"}

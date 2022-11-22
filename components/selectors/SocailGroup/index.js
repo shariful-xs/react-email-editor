@@ -48,11 +48,12 @@ export const SocailGroup = (props) => {
       style={{
         width: "100%",
         display: "flex",
+        flexWrap: "wrap",
         flexDirection: flexDirection,
         justifyContent: justifyContent,
         alignItems: alignItems,
         color: `rgba(${Object.values(color)})`,
-        gap: `${gap}px`,
+        gap: `${gap}rem`,
         cursor: "pointer",
       }}
     >
@@ -62,7 +63,7 @@ export const SocailGroup = (props) => {
             <a href={item?.url ? item?.url : "#"}>
               <img
                 style={{
-                  width: `${iconWidth}px`,
+                  width: `${iconWidth}rem`,
                 }}
                 src={item?.icon}
                 alt={item?.name}
@@ -78,8 +79,8 @@ export const SocailGroup = (props) => {
 SocailGroup.craft = {
   displayName: "Socail Group",
   props: {
-    iconWidth: "30",
-    gap: "20",
+    iconWidth: "1.875",
+    gap: "1.25",
     color: { r: 99, g: 99, b: 99, a: 1 },
   },
   rules: {

@@ -1,7 +1,6 @@
 import { useEditor } from "@craftjs/core";
 import cx from "classnames";
 import React, { useEffect, useRef } from "react";
-
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { Toolbox } from "./Toolbox";

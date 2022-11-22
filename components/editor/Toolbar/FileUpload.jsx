@@ -34,8 +34,8 @@ const FileUpload = () => {
   return (
     <div
       style={{
-        width: "250px",
-        height: "100px",
+        width: "15.625rem",
+        height: "6.25rem",
         textAlign: "center",
         margin: "0 auto",
         paddingTop: "8px",
@@ -51,7 +51,7 @@ const FileUpload = () => {
       >
         <AiOutlineCloudUpload
           style={{
-            fontSize: "32px",
+            fontSize: "2rem",
             color: "green",
             margin: "0 auto",
           }}
@@ -71,9 +71,9 @@ const FileUpload = () => {
         style={{
           display: "inline-block",
           border: "1px solid #E0E0E0",
-          marginTop: "6px",
-          padding: "4px 10px",
-          borderRadius: "4px",
+          marginTop: "0.375rem",
+          padding: "0.25rem 0.625rem",
+          borderRadius: "0.25rem",
         }}
         onClick={handleUploadBtn}
       >

@@ -75,8 +75,6 @@ export const Toolbox = () => {
                 is={Container}
                 background={{ r: 78, g: 78, b: 78, a: 1 }}
                 color={{ r: 0, g: 0, b: 0, a: 1 }}
-                height="300px"
-                width="300px"
               ></Element>
             )
           }
@@ -96,7 +94,7 @@ export const Toolbox = () => {
         </div>
         <div
           ref={(ref) =>
-            create(ref, <Text fontSize="12" textAlign="left" text="Hi there" />)
+            create(ref, <Text fontSize="1" textAlign="left" text="Hi there" />)
           }
         >
           <Tooltip title="Text" placement="right">
@@ -112,7 +110,7 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div ref={(ref) => create(ref, <Button height="auto" width="200px" />)}>
+        <div ref={(ref) => create(ref, <Button width="1rem" />)}>
           <Tooltip title="Button" placement="right">
             <Item
               style={{
@@ -173,14 +171,7 @@ export const Toolbox = () => {
           </Tooltip>
         </div>
 
-        <div
-          ref={(ref) =>
-            create(
-              ref,
-              <List fontSize="14" textAlign="left" text="New List Created" />
-            )
-          }
-        >
+        <div ref={(ref) => create(ref, <List />)}>
           <Tooltip title="List" placement="right">
             <Item
               style={{

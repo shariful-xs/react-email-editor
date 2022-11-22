@@ -3,12 +3,18 @@ import React from "react";
 const InputBox = ({ title, value, onChange }) => {
   return (
     <div>
-      <label className="text-sm" htmlFor="inputBox">
+      <label
+        style={{
+          marginBottom: "0.5rem",
+        }}
+        className="text-sm"
+        htmlFor="inputBox"
+      >
         {title}
       </label>
       <input
         style={{
-          width: "60px",
+          width: "5rem",
           outline: 0,
         }}
         value={value}

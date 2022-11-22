@@ -65,7 +65,7 @@ export const Header = ({ bodyRef }) => {
   useEffect(() => {
     fetch("http://localhost:5000/data")
       .then((res) => res.json())
-      .then((data) => data?.html);
+      .then((data) => console.log(data?.html));
   }, []);
 
   // handleData function work -> data send from client side to server side
