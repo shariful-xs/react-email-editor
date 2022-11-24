@@ -62,7 +62,7 @@ export const Toolbox = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(2, 1fr)`,
+          gridTemplateColumns: `repeat(3, 1fr)`,
         }}
         className=" pt-3"
       >
@@ -82,7 +82,7 @@ export const Toolbox = () => {
           <Tooltip title="Container" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -94,13 +94,13 @@ export const Toolbox = () => {
         </div>
         <div
           ref={(ref) =>
-            create(ref, <Text fontSize="1" textAlign="left" text="Hi there" />)
+            create(ref, <Text fontSize="12" textAlign="left" text="Hi there" />)
           }
         >
           <Tooltip title="Text" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -110,11 +110,11 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div ref={(ref) => create(ref, <Button width="1rem" />)}>
+        <div ref={(ref) => create(ref, <Button />)}>
           <Tooltip title="Button" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -131,7 +131,7 @@ export const Toolbox = () => {
           <Tooltip title="Picture Tool" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -146,7 +146,7 @@ export const Toolbox = () => {
           <Tooltip title="Socail Icon" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -160,7 +160,7 @@ export const Toolbox = () => {
           <Tooltip title="Divider" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block"
@@ -175,7 +175,7 @@ export const Toolbox = () => {
           <Tooltip title="List" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block custom-item-class"
@@ -189,7 +189,7 @@ export const Toolbox = () => {
           <Tooltip title="Video" placement="right">
             <Item
               style={{
-                background: "#f3edef",
+                border: "1px solid #E0E0E0",
                 borderRadius: "4px",
               }}
               className="m-2 py-2 cursor-pointer block custom-item-class"

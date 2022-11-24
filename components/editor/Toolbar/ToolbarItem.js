@@ -146,7 +146,7 @@ export const ToolbarItem = ({
         ) : type === "box" ? (
           <InputBox
             title={props.label}
-            value={value || "1.5"}
+            value={value || "30"}
             onChange={(value) =>
               setProp(
                 (props) => (props[propKey] = onChange ? onChange(value) : value)

@@ -6,8 +6,8 @@ import { useNode } from "@craftjs/core";
 const defaultProps = {
   padding: ["0", "0", "0", "0"],
   margin: ["0", "0", "0", "0"],
-  width: "31.5rem",
-  height: "12.5rem",
+  width: "500px",
+  height: "200px",
 };
 const initPicture =
   "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg";
@@ -52,3 +52,7 @@ ImgTool.craft = {
     toolbar: ImgToolSettings,
   },
 };
+
+{
+  /* */
+}

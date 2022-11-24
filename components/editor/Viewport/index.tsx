@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { Toolbox } from "./Toolbox";
+import TabPannel from "../TabPannel/TabPannel";
 
 export const Viewport: React.FC = ({ children }) => {
   const bodyRef = useRef(null);
@@ -42,18 +43,25 @@ export const Viewport: React.FC = ({ children }) => {
       <div
         className={cx(["flex h-full overflow-hidden flex-row w-full fixed"])}
       >
-        <Toolbox />
+        {/* <Toolbox /> */}
+
         <div className="page-container flex flex-1 h-full flex-col">
           <Header bodyRef={bodyRef} />
           <div
+            style={{
+              display: "flex",
+              justifyContent: enabled ? "flex-start" : "center",
+              gap: "0 10px",
+            }}
             className={cx([
-              "craftjs-renderer flex-1 h-full w-full transition pb-8 overflow-auto",
+              "craftjs-renderer   h-full w-full transition  overflow-auto",
               {
                 "bg-renderer-gray": enabled,
               },
             ])}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
+            <TabPannel />
             <div
               style={{
                 fontFamily: "monospace",

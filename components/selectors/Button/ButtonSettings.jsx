@@ -14,7 +14,7 @@ export const ButtonSettings = () => {
           return `${width || 0}`;
         }}
       >
-        <ToolbarItem propKey="width" full={true} type="slider" label="Width" />
+        <ToolbarItem propKey="width" type="text" label="Width" />
       </ToolbarSection>
       <ToolbarSection title="Action">
         {/* <SetLink /> */}

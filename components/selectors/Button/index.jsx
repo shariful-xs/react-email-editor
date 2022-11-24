@@ -29,7 +29,7 @@ export const Button = (props) => {
 
   const customBtnStyle = {
     display: "inline-block",
-    width: `${width}rem`,
+    width: `${width}`,
     textDecoration: "none",
     margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
     padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
@@ -42,22 +42,29 @@ export const Button = (props) => {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        textAlign: textAlign,
-      }}
-    >
-      <a href={url ? url : "#"} style={customBtnStyle} ref={connect}>
-        <Text {...textComponent} text={text} color={color} />
-      </a>
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td
+            style={{
+              width: "100%",
+              textAlign: textAlign,
+            }}
+          >
+            <a href={url ? url : "#"} style={customBtnStyle} ref={connect}>
+              <Text {...textComponent} text={text} color={color} />
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
 Button.craft = {
   displayName: "Button",
   props: {
+    width: "150px",
     background: { r: 99, g: 99, b: 99, a: 1 },
     color: { r: 255, g: 255, b: 255, a: 1 },
     buttonStyle: "full",

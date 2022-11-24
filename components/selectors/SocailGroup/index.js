@@ -43,44 +43,58 @@ export const SocailGroup = (props) => {
   const renderItem = socailIconList?.length > 0 ? socailIconList : initItems;
 
   return (
-    <div
+    <table
       ref={connect}
       style={{
+        borderCollapse: "collapse",
         width: "100%",
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: flexDirection,
-        justifyContent: justifyContent,
-        alignItems: alignItems,
-        color: `rgba(${Object.values(color)})`,
-        gap: `${gap}rem`,
-        cursor: "pointer",
       }}
     >
-      {renderItem.map((item) => {
-        return (
-          <Tooltip title={item?.name} placement="top" key={item?._id}>
-            <a href={item?.url ? item?.url : "#"}>
-              <img
-                style={{
-                  width: `${iconWidth}rem`,
-                }}
-                src={item?.icon}
-                alt={item?.name}
-              />
-            </a>
-          </Tooltip>
-        );
-      })}
-    </div>
+      <tbody>
+        <tr>
+          <td
+            style={{
+              width: "100%",
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: flexDirection,
+              justifyContent: justifyContent,
+              alignItems: alignItems,
+              color: `rgba(${Object.values(color)})`,
+              gap: `${gap}px`,
+              cursor: "pointer",
+            }}
+          >
+            {renderItem.map((item) => {
+              return (
+                <div key={item?._id}>
+                  <Tooltip title={item?.name} placement="top">
+                    <a href={item?.url ? item?.url : "#"}>
+                      <img
+                        style={{
+                          width: `${iconWidth}px`,
+                        }}
+                        src={item?.icon}
+                        alt={item?.name}
+                      />
+                    </a>
+                  </Tooltip>
+                </div>
+              );
+            })}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
 SocailGroup.craft = {
   displayName: "Socail Group",
   props: {
-    iconWidth: "1.875",
-    gap: "1.25",
+    iconWidth: "30",
+    gap: "20",
+    padding: ["10", "10", "10", "10"],
     color: { r: 99, g: 99, b: 99, a: 1 },
   },
   rules: {

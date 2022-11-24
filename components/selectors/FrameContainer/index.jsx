@@ -19,24 +19,33 @@ export const FrameContainer = (props) => {
   };
   const { background, color, padding, shadow, radius, children } = props;
   return (
-    <div
+    <table
       ref={(ref) => connect(drag(ref))}
-      style={{
-        minWidth: "37.5rem",
-        maxWidth: "37.5rem",
-        background: `rgba(${Object.values(background)})`,
-        color: `rgba(${Object.values(color)})`,
-        padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
-        boxShadow:
-          shadow === 0
-            ? "none"
-            : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
-        borderRadius: `${radius}px`,
-        overflowWrap: "break-word",
-      }}
+      style={{ borderCollapse: "collapse", borderSpacing: "0" }}
     >
-      {children}
-    </div>
+      <tbody>
+        <tr>
+          <td
+            style={{
+              minWidth: "600px",
+              maxWidth: "600px",
+              minHeight: "350px",
+              background: `rgba(${Object.values(background)})`,
+              color: `rgba(${Object.values(color)})`,
+              padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
+              boxShadow:
+                shadow === 0
+                  ? "none"
+                  : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
+              borderRadius: `${radius}px`,
+              overflowWrap: "break-word",
+            }}
+          >
+            {children}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

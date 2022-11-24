@@ -7,8 +7,8 @@ const defaultProps = {
   justifyContent: "flex-start",
   margin: ["0", "0", "0", "0"],
   background: { r: 99, g: 99, b: 99, a: 1 },
-  width: "40",
-  height: "2",
+  width: "40px",
+  height: "2px",
 };
 
 export const Divider = (props) => {
@@ -20,23 +20,28 @@ export const Divider = (props) => {
   const { width, height, background, justifyContent, margin } = props;
 
   return (
-    <div
-      ref={connect}
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: `${justifyContent}`,
-        margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
-      }}
-    >
-      <div
-        style={{
-          width: `${width}%`,
-          height: `${height}px`,
-          background: `rgba(${Object.values(background)})`,
-        }}
-      ></div>
-    </div>
+    <table ref={connect}>
+      <tbody>
+        <tr>
+          <td
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: `${justifyContent}`,
+              margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
+            }}
+          >
+            <div
+              style={{
+                width: `${width}`,
+                height: `${height}`,
+                background: `rgba(${Object.values(background)})`,
+              }}
+            ></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

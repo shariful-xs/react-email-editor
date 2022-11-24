@@ -1,0 +1,39 @@
+.tabContainer {
+  transition: 0.2s linear;
+}
+.tabStyle {
+  margin: 0;
+  background-color: #fff;
+}
+.tabList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+.tabList p {
+  font-size: 12px;
+}
+.customBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.customBtn::after {
+  position: absolute;
+  content: "<";
+  width: 15px;
+  height: 65px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  color: #fff;
+  background-color: #63636381;
+  padding-left: 3px;
+  font-size: 12px;
+  border-radius: 0px 12px 12px 0px;
+}
+.customBtn:hover::after {
+  background-color: #636363;
+}
