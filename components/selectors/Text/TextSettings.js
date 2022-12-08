@@ -1,12 +1,56 @@
 import React from "react";
-
+import {
+  AiOutlineAlignLeft,
+  AiOutlineAlignCenter,
+  AiOutlineAlignRight,
+} from "react-icons/ai";
+import { BsJustify } from "react-icons/bs";
 import { capitalize, weightDescription } from "../../../utils/text";
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
-
+import Allignment from "../../editor/Toolbar/Alignment";
 export const TextSettings = () => {
+  // list  of alignment
+  const alignment = [
+    {
+      value: "left",
+      name: "alignment",
+      label: "Left",
+      icon: <AiOutlineAlignLeft />,
+      toolTip: "Left",
+    },
+    {
+      value: "center",
+      name: "alignment",
+      label: "Center",
+      icon: <AiOutlineAlignCenter />,
+      toolTip: "Center",
+    },
+    {
+      value: "right",
+      name: "alignment",
+      label: "Right",
+      icon: <AiOutlineAlignRight />,
+      toolTip: "Right",
+    },
+    {
+      value: "justify",
+      name: "alignment",
+      label: "Justify",
+      icon: <BsJustify />,
+      toolTip: "Justify",
+    },
+  ];
   return (
     <React.Fragment>
+      <ToolbarSection title="Alignment">
+        <Allignment
+          title="Text Align"
+          propsName="alignment"
+          defaultValue="left"
+          options={alignment}
+        />
+      </ToolbarSection>
       <ToolbarSection title="Tags">
         <ToolbarItem
           full={true}

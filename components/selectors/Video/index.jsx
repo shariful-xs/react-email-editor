@@ -31,47 +31,33 @@ export const Video = (props) => {
       enabled={enabled.toString()}
       style={{
         borderCollapse: "collapse",
-        borderSpacing: "0",
+        display: "flex",
+        justifyContent,
+        alignItems: "center",
       }}
     >
       <tbody>
         <tr>
           <td
             style={{
-              width: "100%",
+              width: width,
+              height: height,
+              background: `url(${picture ? picture : pictureInit})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
               display: "flex",
-              justifyContent: justifyContent,
+              justifyContent: "center",
+              alignItems: "center",
               margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
             }}
           >
-            <div
-              style={{
-                minWidth: `${width}`,
-                maxHeight: `${height}`,
-                minHeight: `${height}`,
-                background: `url(${picture ? picture : pictureInit})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <a href={url ? url : "#"} target="_blank">
-                  <img
-                    src="https://i.ibb.co/7jpgKfq/icons8-youtube-35.png"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
+            <a href={url ? url : "#"} target="_blank">
+              <img
+                src="https://i.ibb.co/7jpgKfq/icons8-youtube-35.png"
+                alt=""
+              />
+            </a>
           </td>
         </tr>
       </tbody>

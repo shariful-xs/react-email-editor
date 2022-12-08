@@ -1,0 +1,34 @@
+.controlHeadingName {
+  display: inline-block;
+  margin: 0;
+  color: #808080;
+  margin-bottom: 10px;
+}
+.inputControlerWrapper {
+  display: flex;
+  gap: 0;
+}
+.inputControler {
+  text-align: center;
+}
+.inputControler input[type="number"] {
+  display: block;
+  width: 46px;
+  text-align: center;
+  border: 1px solid #80808080;
+  outline: inherit;
+}
+.inputControler span {
+  font-size: 10px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.toggleControler {
+  width: 46px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #80808080;
+  cursor: pointer;
+}

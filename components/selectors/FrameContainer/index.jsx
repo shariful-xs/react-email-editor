@@ -21,7 +21,11 @@ export const FrameContainer = (props) => {
   return (
     <table
       ref={(ref) => connect(drag(ref))}
-      style={{ borderCollapse: "collapse", borderSpacing: "0" }}
+      style={{
+        borderCollapse: "collapse",
+        borderSpacing: "0",
+        margin: "0 auto",
+      }}
     >
       <tbody>
         <tr>
@@ -39,6 +43,7 @@ export const FrameContainer = (props) => {
                   : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
               borderRadius: `${radius}px`,
               overflowWrap: "break-word",
+              overflow: "clip",
             }}
           >
             {children}

@@ -13,10 +13,11 @@ export const Text = ({
   text,
   margin,
   tag,
+  alignment,
 }) => {
   const {
     connectors: { connect },
-    setProp,
+    actions: { setProp },
   } = useNode();
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
@@ -27,6 +28,7 @@ export const Text = ({
       innerRef={connect}
       html={text} // innerHTML of the editable div
       disabled={!enabled}
+      defaultValue={text}
       onChange={(e) => {
         setProp((prop) => (prop.text = e.target.value), 500);
       }} // use true to disable editing
@@ -38,7 +40,7 @@ export const Text = ({
         fontSize: `${fontSize}px`,
         textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
         fontWeight,
-        textAlign,
+        textAlign: alignment,
       }}
     />
   );
@@ -48,11 +50,12 @@ Text.craft = {
   displayName: "Text",
   props: {
     textAlign: "left",
+    alignment: "left",
     fontWeight: "500",
     color: { r: 92, g: 90, b: 90, a: 1 },
     margin: [0, 0, 0, 0],
     shadow: 0,
-    text: "Text",
+    text: "Write New Text",
     tag: "p",
   },
   related: {

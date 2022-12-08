@@ -16,12 +16,13 @@ export const List = ({
 }) => {
   const {
     connectors: { connect },
-    setProp,
+    actions: { setProp },
   } = useNode();
+
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
-  console.log(fontSize);
+
   return (
     <>
       <ContentEditable
@@ -32,12 +33,13 @@ export const List = ({
           setProp((prop) => (prop.text = e.target.value), 500);
         }} // use true to disable editing
         tagName="li" // Use a custom HTML tag (uses a div by default)
+        className="contentEditable"
         style={{
           width: "100%",
           listStyleType: `${listStyleType}`,
           margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
           color: `rgba(${Object.values(color)})`,
-          fontSize: `${fontSize}rem`,
+          fontSize: `${fontSize}px`,
           textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
           fontWeight,
           textAlign,
@@ -50,7 +52,7 @@ export const List = ({
 List.craft = {
   displayName: "List",
   props: {
-    fontSize: "1",
+    fontSize: "16",
     textAlign: "left",
     fontWeight: "500",
     color: { r: 92, g: 90, b: 90, a: 1 },

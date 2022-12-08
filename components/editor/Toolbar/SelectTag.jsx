@@ -28,7 +28,6 @@ const SelectTag = ({ title, value, onchange }) => {
           borderRadius: "5px",
           outline: "none",
         }}
-        defaultValue="none"
         value={value}
         onChange={(event) => onchange(event.target.value)}
       >

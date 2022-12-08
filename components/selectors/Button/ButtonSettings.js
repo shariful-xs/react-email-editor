@@ -3,7 +3,7 @@ import React from "react";
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 // import SetLink from "../../editor/Toolbar/SetLink";
-
+import { capitalize, weightDescription } from "../../../utils/text";
 export const ButtonSettings = () => {
   return (
     <React.Fragment>
@@ -54,11 +54,65 @@ export const ButtonSettings = () => {
         />
         <ToolbarItem full={true} propKey="color" type="color" label="Text" />
       </ToolbarSection>
-      <ToolbarSection title="Alignment">
-        <ToolbarItem propKey="textAlign" type="radio" label="Text Align">
+      <ToolbarSection
+        title="Border_Color"
+        props={["borderColor"]}
+        summary={({ borderColor }) => {
+          return (
+            <div className="flex flex-row-reverse">
+              <div
+                style={{
+                  background:
+                    borderColor && `rgba(${Object.values(borderColor)})`,
+                }}
+                className="shadow-md flex-end w-6 h-6 text-center flex items-center rounded-full bg-black"
+              ></div>
+            </div>
+          );
+        }}
+      >
+        <ToolbarItem
+          full={true}
+          propKey="borderColor"
+          type="bg"
+          label="Background"
+        />
+      </ToolbarSection>
+      <ToolbarSection
+        title="Typography"
+        props={["fontSize", "fontWeight", "textAlign"]}
+        summary={({ fontSize, fontWeight, textAlign }) => {
+          return `${fontSize || ""}, ${weightDescription(
+            fontWeight
+          )}, ${capitalize(textAlign)}`;
+        }}
+      >
+        <ToolbarItem
+          full={true}
+          propKey="fontSize"
+          type="slider"
+          label="Font Size"
+        />
+        <ToolbarItem propKey="textAlign" type="radio" label="Align">
           <ToolbarRadio value="left" label="Left" />
           <ToolbarRadio value="center" label="Center" />
           <ToolbarRadio value="right" label="Right" />
+        </ToolbarItem>
+        <ToolbarItem propKey="fontWeight" type="radio" label="Weight">
+          <ToolbarRadio value="400" label="Regular" />
+          <ToolbarRadio value="500" label="Medium" />
+          <ToolbarRadio value="700" label="Bold" />
+        </ToolbarItem>
+      </ToolbarSection>
+      <ToolbarSection title="Alignment">
+        <ToolbarItem
+          propKey="justifyContent"
+          type="radio"
+          label="Justify Content"
+        >
+          <ToolbarRadio value="flex-start" label="Flex start" />
+          <ToolbarRadio value="center" label="Center" />
+          <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
       </ToolbarSection>
       <ToolbarSection

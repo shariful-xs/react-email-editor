@@ -5,9 +5,9 @@ import { DividerSettings } from "./DividerSettings";
 const defaultProps = {
   display: "flex",
   justifyContent: "flex-start",
-  margin: ["0", "0", "0", "0"],
+  margin: { top: "0", right: "0", bottom: "0", left: "0" },
   background: { r: 99, g: 99, b: 99, a: 1 },
-  width: "40px",
+  width: "400px",
   height: "2px",
 };
 
@@ -15,30 +15,30 @@ export const Divider = (props) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({ selected: node.events.selected }));
+
   props = { ...defaultProps, ...props };
 
   const { width, height, background, justifyContent, margin } = props;
 
   return (
-    <table ref={connect}>
+    <table
+      ref={connect}
+      style={{
+        borderCollapse: "collapse",
+        display: "flex",
+        justifyContent,
+        margin: `${margin.top}px ${margin.right}px ${margin.bottom}px ${margin.left}px`,
+      }}
+    >
       <tbody>
         <tr>
           <td
             style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: `${justifyContent}`,
-              margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
+              width,
+              height,
+              background: `rgba(${Object.values(background)})`,
             }}
-          >
-            <div
-              style={{
-                width: `${width}`,
-                height: `${height}`,
-                background: `rgba(${Object.values(background)})`,
-              }}
-            ></div>
-          </td>
+          ></td>
         </tr>
       </tbody>
     </table>

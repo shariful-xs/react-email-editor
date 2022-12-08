@@ -31,6 +31,7 @@ const SetLink = ({ title, value, onChange }) => {
           marginTop: "8px",
           outline: "none",
         }}
+        placeholder="Enter the link"
         className="block border border-1 px-2 py-1 rounded-md "
         type="text"
       />

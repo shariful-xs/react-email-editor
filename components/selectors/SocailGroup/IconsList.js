@@ -54,7 +54,9 @@ const IconsList = () => {
   } = useNode();
 
   useEffect(() => {
-    setProp((props) => (props.socailIconList = cardGroup));
+    if (cardGroup.length > 0) {
+      setProp((props) => (props.socailIconList = cardGroup));
+    }
   }, [cardGroup]);
 
   //  =====Handle Items =======//

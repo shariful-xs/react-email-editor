@@ -1,7 +1,7 @@
 import React from "react";
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
-
+import SpaceControl from "../../editor/Toolbar/SpaceControl";
 export const DividerSettings = () => {
   return (
     <React.Fragment>
@@ -15,7 +15,12 @@ export const DividerSettings = () => {
         <ToolbarItem propKey="width" type="text" label="Width" />
         <ToolbarItem propKey="height" type="text" label="Height" />
       </ToolbarSection>
-      <ToolbarSection title="General">
+
+      <ToolbarSection title="Space_Control">
+        <SpaceControl title="Margin" propsName="margin" />
+      </ToolbarSection>
+
+      <ToolbarSection title="Alignment">
         <ToolbarItem
           propKey="justifyContent"
           type="radio"
@@ -25,25 +30,6 @@ export const DividerSettings = () => {
           <ToolbarRadio value="center" label="Center" />
           <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
-        <ToolbarSection
-          title="Margin"
-          props={["margin"]}
-          summary={({ margin }) => {
-            return `${margin[0] || 0}px ${margin[1] || 0}px ${
-              margin[2] || 0
-            }px ${margin[3] || 0}px`;
-          }}
-        >
-          <ToolbarItem propKey="margin" index={0} type="slider" label="Top" />
-          <ToolbarItem propKey="margin" index={1} type="slider" label="Right" />
-          <ToolbarItem
-            propKey="margin"
-            index={2}
-            type="slider"
-            label="Bottom"
-          />
-          <ToolbarItem propKey="margin" index={3} type="slider" label="Left" />
-        </ToolbarSection>
       </ToolbarSection>
 
       <ToolbarSection title="Apparence">

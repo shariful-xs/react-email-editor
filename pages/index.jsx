@@ -12,10 +12,30 @@ import { Container, Text } from "../components/selectors";
 import { Button } from "../components/selectors/Button";
 import { Video } from "../components/selectors/Video";
 import { ImgTool } from "../components/selectors/Imgtool";
+import { Picture } from "../components/selectors/Picture";
 import { SocailGroup } from "../components/selectors/SocailGroup";
 import { Divider } from "../components/selectors/Divider";
 import { List } from "../components/selectors/List";
+import { HtmlContent } from "../components/selectors/Html";
 import "react-toastify/dist/ReactToastify.css";
+// for test
+import { Column as TestSingleCol } from "../components/selectors/Test/Column";
+import { TestColumnOne } from "../components/selectors/Test/TestColumnOne";
+import { TestColumnTwo } from "../components/selectors/Test/TestColumnTwo";
+import { TestColumnThree } from "../components/selectors/Test/TestColumnThree";
+import { TestColumnFour } from "../components/selectors/Test/TestColumnFour";
+import { TestColumnFive } from "../components/selectors/Test/TestColumnFive";
+import { TestColumnSix } from "../components/selectors/Test/TestColumnSix";
+// import context api
+import EditorProvider from "../components//editor/context/EditorProvider";
+//columns
+import { Column } from "components/selectors/column";
+import { ColumnOne } from "components/selectors/column/ColumnOne";
+import { ColumnTwo } from "components/selectors/column/ColumnTwo";
+import { ColumnThree } from "components/selectors/column/ColumnThree";
+import { ColumnFour } from "components/selectors/column/ColumnFour";
+import { ColumnFive } from "components/selectors/column/ColumnFive";
+import { ColumnSix } from "components/selectors/column/ColumnSix";
 
 const theme = createMuiTheme({
   typography: {
@@ -45,7 +65,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
+      <EditorProvider>
         <div className="h-screen">
           <Editor
             resolver={{
@@ -54,10 +74,27 @@ function App() {
               Text,
               Button,
               ImgTool,
+              Picture,
               SocailGroup,
               Divider,
               List,
               Video,
+              HtmlContent,
+              Column,
+              ColumnOne,
+              ColumnTwo,
+              ColumnThree,
+              ColumnFour,
+              ColumnFive,
+              ColumnSix,
+              // for test
+              TestSingleCol,
+              TestColumnTwo,
+              TestColumnOne,
+              TestColumnThree,
+              TestColumnFour,
+              TestColumnFive,
+              TestColumnSix,
             }}
             enabled={false}
             onRender={RenderNode}
@@ -89,7 +126,7 @@ function App() {
             </Viewport>
           </Editor>
         </div>
-      </Provider>
+      </EditorProvider>
     </ThemeProvider>
   );
 }

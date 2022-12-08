@@ -24,7 +24,7 @@
     "strictNullChecks": false
   },
   "include": [
-    "components/selectors/Button/ButtonSettings.jsx",
+    "components/selectors/Button/ButtonSettings.js",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
@@ -46,7 +46,14 @@
     "components/editor/Toolbar/ToolbarTextInput.jsx",
     "components/selectors/Container/index.jsx",
     "components/selectors/Container/ContainerSettings.js",
-    "pages/index.jsx"
+    "pages/index.jsx",
+    "components/editor/Viewport/Toolbox.jsx",
+    "components/editor/Viewport/index.jsx",
+    "components/editor/Viewport/Header.jsx",
+    "components/editor/index.js",
+    "components/editor/RenderNode.jsx",
+    "components/editor/Viewport/Sidebar/SidebarItem.tsx",
+    "components/editor/Viewport/Sidebar/index.tsx"
   ],
   "exclude": ["node_modules"]
 }

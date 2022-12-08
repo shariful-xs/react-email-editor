@@ -2,11 +2,11 @@ import { useEditor } from "@craftjs/core";
 import cx from "classnames";
 import React, { useEffect, useRef } from "react";
 import { Header } from "./Header";
-import { Sidebar } from "./Sidebar";
-import { Toolbox } from "./Toolbox";
-import TabPannel from "../TabPannel/TabPannel";
-
-export const Viewport: React.FC = ({ children }) => {
+// import { Sidebar } from "./Sidebar";
+// import { Toolbox } from "./Toolbox";
+// import TabPannel from "../../selectors/TabPannel/TabPannel";
+import SidebarTab from "../SidebarTab";
+export const Viewport = ({ children }) => {
   const bodyRef = useRef(null);
   const {
     enabled,
@@ -45,12 +45,14 @@ export const Viewport: React.FC = ({ children }) => {
       >
         {/* <Toolbox /> */}
 
+        {enabled && <SidebarTab />}
+
         <div className="page-container flex flex-1 h-full flex-col">
           <Header bodyRef={bodyRef} />
           <div
             style={{
               display: "flex",
-              justifyContent: enabled ? "flex-start" : "center",
+              justifyContent: "center",
               gap: "0 10px",
             }}
             className={cx([
@@ -61,7 +63,9 @@ export const Viewport: React.FC = ({ children }) => {
             ])}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
-            <TabPannel />
+            {/* sidebar pannel */}
+            {/* <TabPannel /> */}
+
             <div
               style={{
                 fontFamily: "monospace",
@@ -73,7 +77,7 @@ export const Viewport: React.FC = ({ children }) => {
             </div>
           </div>
         </div>
-        <Sidebar />
+        {/* <Sidebar /> */}
       </div>
     </div>
   );

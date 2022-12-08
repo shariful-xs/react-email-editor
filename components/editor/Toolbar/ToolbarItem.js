@@ -167,7 +167,7 @@ export const ToolbarItem = ({
         ) : type === "listStyle" ? (
           <ListStyle
             title={props.label}
-            value={value || "circle"}
+            value={value}
             onchange={(value) =>
               setProp(
                 (props) => (props[propKey] = onChange ? onChange(value) : value)
@@ -178,7 +178,7 @@ export const ToolbarItem = ({
         ) : type === "selectTag" ? (
           <SelectTag
             title={props.label}
-            value={value || ""}
+            value={value}
             onchange={(value) =>
               setProp(
                 (props) => (props[propKey] = onChange ? onChange(value) : value)

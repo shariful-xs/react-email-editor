@@ -50,7 +50,7 @@ export const ToolbarSection = ({ title, props, summary, children }) => {
       }, {}),
   }));
   return (
-    <ExpansionPanel classes={panelClasses}>
+    <ExpansionPanel classes={panelClasses} defaultExpanded>
       <ExpansionPanelSummary classes={summaryClasses}>
         <div className="px-6 w-full">
           <Grid container direction="row" alignItems="center" spacing={3}>

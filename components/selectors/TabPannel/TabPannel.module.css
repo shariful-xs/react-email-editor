@@ -1,10 +1,7 @@
 .tabContainer {
   transition: 0.2s linear;
 }
-.tabStyle {
-  margin: 0;
-  background-color: #fff;
-}
+
 .tabList {
   display: flex;
   flex-direction: column;

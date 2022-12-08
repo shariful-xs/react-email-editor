@@ -7,8 +7,6 @@ import styled from "styled-components";
 
 import Checkmark from "../../../public/icons/check.svg";
 import Customize from "../../../public/icons/customize.svg";
-import RedoSvg from "../../../public/icons/toolbox/redo.svg";
-import UndoSvg from "../../../public/icons/toolbox/undo.svg";
 
 const HeaderDiv = styled.div`
   width: 100%;
@@ -36,30 +34,10 @@ const Btn = styled.a`
   }
 `;
 
-const Item = styled.a<{ disabled?: boolean }>`
-  margin-right: 10px;
-  cursor: pointer;
-  svg {
-    width: 20px;
-    height: 20px;
-    fill: #707070;
-  }
-  ${(props) =>
-    props.disabled &&
-    `
-    opacity:0.5;
-    cursor: not-allowed;
-  `}
-`;
-
 export const Header = ({ bodyRef }) => {
-  const { enabled, canUndo, canRedo, actions, query } = useEditor(
-    (state, query) => ({
-      enabled: state.options.enabled,
-      canUndo: query.history.canUndo(),
-      canRedo: query.history.canRedo(),
-    })
-  );
+  const { enabled, actions, query } = useEditor((state, query) => ({
+    enabled: state.options.enabled,
+  }));
 
   // useEffect hooks use for fetch the editor child data from server side
   useEffect(() => {
@@ -106,21 +84,6 @@ export const Header = ({ bodyRef }) => {
   return (
     <HeaderDiv className="header text-white transition w-full">
       <div className="items-center flex w-full px-4 justify-end">
-        {enabled && (
-          <div className="flex-1 flex">
-            <Tooltip title="Undo" placement="bottom">
-              <Item disabled={!canUndo} onClick={() => actions.history.undo()}>
-                <UndoSvg />
-              </Item>
-            </Tooltip>
-            <Tooltip title="Redo" placement="bottom">
-              <Item disabled={!canRedo} onClick={() => actions.history.redo()}>
-                <RedoSvg />
-              </Item>
-            </Tooltip>
-          </div>
-        )}
-
         <div className="flex">
           <Btn
             className={cx([

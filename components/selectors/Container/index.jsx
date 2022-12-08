@@ -15,8 +15,8 @@ const defaultProps = {
   color: { r: 0, g: 0, b: 0, a: 1 },
   shadow: 0,
   radius: 0,
-  width: "600px",
-  height: "auto",
+  width: "500px",
+  height: "200px",
 };
 
 export const Container = (props) => {
@@ -38,27 +38,40 @@ export const Container = (props) => {
     children,
   } = props;
   return (
-    <Resizer
-      propKey={{ width: "width", height: "height" }}
+    <table
       style={{
-        display: "flex",
-        justifyContent,
-        flexDirection,
-        alignItems,
-        background: `rgba(${Object.values(background)})`,
-        color: `rgba(${Object.values(color)})`,
-        padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
-        margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
-        boxShadow:
-          shadow === 0
-            ? "none"
-            : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
-        borderRadius: `${radius}px`,
-        flex: fillSpace === "yes" ? 1 : "unset",
+        borderCollapse: "collapse",
+        borderSpacing: "0",
       }}
     >
-      {children}
-    </Resizer>
+      <tbody>
+        <tr>
+          <td>
+            <Resizer
+              propKey={{ width: "width", height: "height" }}
+              style={{
+                display: "flex",
+                justifyContent,
+                flexDirection,
+                alignItems,
+                background: `rgba(${Object.values(background)})`,
+                color: `rgba(${Object.values(color)})`,
+                padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
+                margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
+                boxShadow:
+                  shadow === 0
+                    ? "none"
+                    : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
+                borderRadius: `${radius}px`,
+                flex: fillSpace === "yes" ? 1 : "unset",
+              }}
+            >
+              {children}
+            </Resizer>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

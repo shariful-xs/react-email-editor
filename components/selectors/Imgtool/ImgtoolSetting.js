@@ -1,5 +1,6 @@
 import React from "react";
 import { ToolbarSection, ToolbarItem } from "../../editor";
+import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 import FileUpload from "../../editor/Toolbar/FileUpload";
 
 export const ImgToolSettings = () => {
@@ -17,6 +18,31 @@ export const ImgToolSettings = () => {
       >
         <ToolbarItem propKey="width" type="text" label="Width" />
         <ToolbarItem propKey="height" type="text" label="Height" />
+      </ToolbarSection>
+      <ToolbarSection title="Alignment">
+        <ToolbarItem
+          propKey="flexDirection"
+          type="radio"
+          label="Flex Direction"
+        >
+          <ToolbarRadio value="row" label="Row" />
+          <ToolbarRadio value="column" label="Column" />
+        </ToolbarItem>
+
+        <ToolbarItem propKey="alignItems" type="radio" label="Align Items">
+          <ToolbarRadio value="flex-start" label="Flex start" />
+          <ToolbarRadio value="center" label="Center" />
+          <ToolbarRadio value="flex-end" label="Flex end" />
+        </ToolbarItem>
+        <ToolbarItem
+          propKey="justifyContent"
+          type="radio"
+          label="Justify Content"
+        >
+          <ToolbarRadio value="flex-start" label="Flex start" />
+          <ToolbarRadio value="center" label="Center" />
+          <ToolbarRadio value="flex-end" label="Flex end" />
+        </ToolbarItem>
       </ToolbarSection>
       <ToolbarSection
         title="Margin"
